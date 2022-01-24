@@ -1,35 +1,38 @@
-import React from "react";
+import React, {useState} from "react";
 
-export default class Signup extends React.Component {
-  constructor(){
-    super();
-    this.state = {
+export default function Signup() {
+    const [input, setInput] = useState({
       name: "",
       email: "",
-      password: "",
-      error: ""
+      password: ""
+    });
+    
+    function handleChange(event) {
+     let {value, name} = event.target;
+     setInput({
+       ...input,
+       [name]: value
+     })
     }
-  }
-  render(){
+
     return (
       <main className="container">
         <h2 className="mt-5 mb-5">Sign up</h2>
         <form>
           <div className="form-group">
-            <label for="name" className="text-muted">Name</label>
-            <input id="name" type="text" className="form-control" />
+            <label htmlFor="name" className="text-muted">Name</label>
+            <input onChange={handleChange} value={input.name} name="name" id="name" type="text" className="form-control" />
           </div>
           <div className="form-group">
-            <label for="email" className="text-muted">Email</label>
-            <input id="email" type="email" className="form-control" />
+            <label htmlFor="email" className="text-muted">Email</label>
+            <input onChange={handleChange} value={input.email} name="email" id="email" type="email" className="form-control" />
           </div>
           <div className="form-group">
-            <label for="password" className="text-muted">Password</label>
-            <input id="password" type="password" className="form-control" />
+            <label htmlFor="password" className="text-muted">Password</label>
+            <input onChange={handleChange} value={input.password} name="password" id="password" type="password" className="form-control" />
           </div>
           <button className="btn ml-0 btn-primary">Sign up</button>
         </form>
       </main>
     )
   }
-}
