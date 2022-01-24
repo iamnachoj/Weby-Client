@@ -1,8 +1,8 @@
 import React from "react";
 import {Routes, Route} from "react-router-dom";
 import Home from "./components/Home";
-import Signup from "./components/signup";
-import Signin from "./components/signin";
+import Signup from "./user/signup";
+import Signin from "./user/signin";
 
 export default function MainRouter(){
   return (
