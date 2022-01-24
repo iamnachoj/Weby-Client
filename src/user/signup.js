@@ -15,6 +15,21 @@ export default function Signup() {
      })
     }
 
+    function submitData(event){
+      event.preventDefault();
+      const user = input;
+      fetch("http://localhost:8080/signup", {
+        method: "POST",
+        headers: {
+          Accept: "application/JSON",
+          "Content-Type": "application/JSON"
+        },
+        body: JSON.stringify(user)
+      })
+      .then((response) => {return response.json})
+      .catch(err => console.log(err))
+    }
+
     return (
       <main className="container">
         <h2 className="mt-5 mb-5">Sign up</h2>
@@ -31,7 +46,7 @@ export default function Signup() {
             <label htmlFor="password" className="text-muted">Password</label>
             <input onChange={handleChange} value={input.password} name="password" id="password" type="password" className="form-control" />
           </div>
-          <button className="btn ml-0 btn-primary">Sign up</button>
+          <button onClick={submitData}className="btn ml-0 btn-primary">Sign up</button>
         </form>
       </main>
     )
