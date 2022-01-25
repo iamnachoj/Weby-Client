@@ -4,7 +4,8 @@ export default function Signup() {
     const [input, setInput] = useState({
       name: "",
       email: "",
-      password: ""
+      password: "",
+      error: ""
     });
     
     function handleChange(event) {
@@ -14,11 +15,9 @@ export default function Signup() {
        [name]: value
      })
     }
-
-    function submitData(event){
-      event.preventDefault();
-      const user = input;
-      fetch("http://localhost:8080/signup", {
+     
+    function signup(user) {
+      return fetch("http://localhost:8080/signup", {
         method: "POST",
         headers: {
           Accept: "application/JSON",
@@ -26,10 +25,29 @@ export default function Signup() {
         },
         body: JSON.stringify(user)
       })
-      .then((response) => {return response.json})
+      .then((response) => {return response.json()})
       .catch(err => console.log(err))
     }
 
+    function submitData(event){
+      event.preventDefault();
+      const user = input;
+      signup(user).then(data => {
+        if(data.error){
+          setInput({
+            ...input,
+            error: data.error
+          })
+        } else {
+          setInput({
+            name: "",
+            email: "",
+            password: "",
+            error: ""
+          })
+        }
+      })
+    }
     return (
       <main className="container">
         <h2 className="mt-5 mb-5">Sign up</h2>
