@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {Link } from "react-router-dom";
 
 export default function Signup() {
     const [input, setInput] = useState({
@@ -12,6 +13,7 @@ export default function Signup() {
      let {value, name} = event.target;
      setInput({
        ...input,
+       error: "",
        [name]: value
      })
     }
@@ -43,7 +45,8 @@ export default function Signup() {
             name: "",
             email: "",
             password: "",
-            error: ""
+            error: "",
+            success: true
           })
         }
       })
@@ -64,6 +67,8 @@ export default function Signup() {
             <label htmlFor="password" className="text-muted">Password</label>
             <input onChange={handleChange} value={input.password} name="password" id="password" type="password" className="form-control" />
           </div>
+          {input.error ? <div className="alert alert-danger">{input.error} </div> : null}
+          {input.success ? <div className="alert alert-success">Successfully created! please <Link to="/signin">log in</Link></div> : null}
           <button onClick={submitData}className="btn ml-0 btn-primary">Sign up</button>
         </form>
       </main>
