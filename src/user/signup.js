@@ -69,7 +69,7 @@ export default function Signup() {
           </div>
           {input.error ? <div className="alert alert-danger">{input.error} </div> : null}
           {input.success ? <div className="alert alert-success">Successfully created! please <Link to="/signin">log in</Link></div> : null}
-          <button onClick={submitData}className="btn ml-0 btn-primary">Sign up</button>
+          <button onClick={submitData}className="btn ml-0">Sign up</button>
         </form>
       </main>
     )
