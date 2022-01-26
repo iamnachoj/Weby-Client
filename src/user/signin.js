@@ -6,6 +6,7 @@ export default function Signin() {
     email: "",
     password: "",
     error: "",
+    loading: false,
     redirect: false
   })
 
@@ -33,11 +34,16 @@ export default function Signin() {
 
   function submitData(event) {
     event.preventDefault();
+    setInput({
+      ...input,
+      loading: true
+    })
     const user = input
     signin(user).then(data => {
       if(data.error){
         setInput({
           ...input,
+          loading: false,
           error: data.error
         })
       } else {
@@ -47,6 +53,7 @@ export default function Signin() {
           email: "",
           password: "",
           error: "",
+          loading: false,
           redirect: true})
       }
     })
@@ -70,6 +77,7 @@ export default function Signin() {
           </div>
           {input.error ? <div className="alert alert-danger">{input.error} </div> : null}
           {input.redirect ? <div className="alert alert-success">Success! loading...</div> : null}
+          {input.loading ? <div className="alert alert-primary">Loading...</div>: null }
           <button onClick={submitData}className="btn ml-0 btn-primary">Sign up</button>
         </form>
       </main>
