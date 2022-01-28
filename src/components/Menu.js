@@ -18,7 +18,7 @@ function signout(next) {
 }
 
 export default function Menu(){
-  const navigate = useNavigate("/")
+  const navigate = useNavigate() // allows to redirect without refreshing the page
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container">
