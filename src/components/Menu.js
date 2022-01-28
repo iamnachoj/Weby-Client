@@ -17,6 +17,15 @@ function signout(next) {
   }
 }
 
+function isAuthenticated(){
+  if(typeof window == undefined){
+    return false
+  }
+  if(localStorage.getItem("token")){
+    return localStorage.getItem("token")
+  } else{ return false }
+}
+
 export default function Menu(){
   const navigate = useNavigate() // allows to redirect without refreshing the page
   return (
@@ -24,15 +33,23 @@ export default function Menu(){
       <div className="container">
         <Link to="/" className="navbar-brand me-2"><h1 style={{fontFamily: "'Geo', sans-serif", fontSize: "3rem"}}>Weby</h1></Link>
 
-        <div id="navbarButtonsExample">
+        <div>
           <div className="d-flex align-items-center">
+          {isAuthenticated()
+          ?
+          <button onClick={() => {signout(() => {navigate("/")})}} className="btn btn-lg btn-link px-2 me-1">Sign out</button>
+          :
+          <div>
             <Link to="/signin" className="btn btn-lg btn-link px-2 me-1">
-              Login
+                Login
             </Link>
             <Link to="/signup" className="btn btn-lg btn-link px-2 me-1">
               Sign up
             </Link>
-            <button onClick={() => {signout(() => {navigate("/")})}} className="btn btn-lg btn-link px-2 me-1">Sign out</button>
+          </div>
+           }
+            
+            
           </div>
         </div>
 
