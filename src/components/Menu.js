@@ -1,4 +1,3 @@
-import React from "react";
 import {Link, useNavigate} from "react-router-dom";
 
 function signout(next) {
@@ -22,12 +21,13 @@ function isAuthenticated(){
     return false
   }
   if(localStorage.getItem("token")){
-    return localStorage.getItem("token")
+    return localStorage.getItem("user")
   } else{ return false }
 }
 
 export default function Menu(){
   const navigate = useNavigate() // allows to redirect without refreshing the page
+  const user = JSON.parse(localStorage.getItem("user"))
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container">
@@ -37,7 +37,11 @@ export default function Menu(){
           <div className="d-flex align-items-center">
           {isAuthenticated()
           ?
-          <button onClick={() => {signout(() => {navigate("/")})}} className="btn btn-lg btn-link px-2 me-1">Sign out</button>
+          <>
+            <i className="far fa-user mr-2"></i>
+            {user.name}
+            <button onClick={() => {signout(() => {navigate("/")})}} className="btn btn-success btn-sm px-2 ml-4 me-1">Sign out</button>
+          </>
           :
           <>
             <Link to="/signin" className="btn btn-lg btn-link px-2 me-1">
@@ -48,8 +52,6 @@ export default function Menu(){
             </Link>
           </>
            }
-            
-            
           </div>
         </div>
 
