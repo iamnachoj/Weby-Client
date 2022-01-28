@@ -39,14 +39,14 @@ export default function Menu(){
           ?
           <button onClick={() => {signout(() => {navigate("/")})}} className="btn btn-lg btn-link px-2 me-1">Sign out</button>
           :
-          <div>
+          <>
             <Link to="/signin" className="btn btn-lg btn-link px-2 me-1">
                 Login
             </Link>
             <Link to="/signup" className="btn btn-lg btn-link px-2 me-1">
               Sign up
             </Link>
-          </div>
+          </>
            }
             
             
