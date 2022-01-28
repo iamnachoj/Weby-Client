@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {Navigate} from "react-router-dom";
+import { signin } from "../auth";
 
 export default function Signin() {
   const [input, setInput] = useState({
@@ -19,18 +20,6 @@ export default function Signin() {
     })
    }
 
-  function signin(user) {
-    return fetch("http://localhost:8080/signin", {
-      method: "POST",
-      headers: {
-        Accept: "application/JSON",
-        "Content-Type": "application/JSON"
-      },
-      body: JSON.stringify(user)
-    })
-    .then((response) => {return response.json()})
-    .catch(err => console.log(err))
-  }
 
   function submitData(event) {
     event.preventDefault();

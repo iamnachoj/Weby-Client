@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {Link } from "react-router-dom";
+import { signup } from "../auth";
 
 export default function Signup() {
     const [input, setInput] = useState({
@@ -18,18 +19,6 @@ export default function Signup() {
      })
     }
      
-    function signup(user) {
-      return fetch("http://localhost:8080/signup", {
-        method: "POST",
-        headers: {
-          Accept: "application/JSON",
-          "Content-Type": "application/JSON"
-        },
-        body: JSON.stringify(user)
-      })
-      .then((response) => {return response.json()})
-      .catch(err => console.log(err))
-    }
 
     function submitData(event){
       event.preventDefault();
