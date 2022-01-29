@@ -14,6 +14,7 @@ export default function Menu(){
           {isAuthenticated()
           ?
           <>
+            <Link className="btn btn-link btn-sm mr-0 p-1" to="/users"><i className="fas fa-user-plus blackicon icon-lg"></i></Link>
             <Link to={`/users/${user._id}`} className="btn btn-success btn-md px-2 ml-4 me-1">
               <i className="far fa-user mr-2"></i>
               {user.name}
