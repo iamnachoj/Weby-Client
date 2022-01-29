@@ -14,9 +14,11 @@ export default function Menu(){
           {isAuthenticated()
           ?
           <>
-            <i className="far fa-user mr-2"></i>
-            {user.name}
-            <button onClick={() => {signout(() => {navigate("/")})}} className="btn btn-success btn-sm px-2 ml-4 me-1">Sign out</button>
+            <Link to={`/users/${user._id}`} className="btn btn-success btn-md px-2 ml-4 me-1">
+              <i className="far fa-user mr-2"></i>
+              {user.name}
+            </Link>
+            <button onClick={() => {signout(() => {navigate("/")})}} className="btn btn-link btn-md px-2 ml-2 me-1">Sign out</button>
           </>
           :
           <>
