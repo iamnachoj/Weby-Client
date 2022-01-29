@@ -1,5 +1,5 @@
 export function signup(user) {
-  return fetch("http://localhost:8080/signup", {
+  return fetch(process.env.REACT_APP_API_URL + "/signup", {
     method: "POST",
     headers: {
       Accept: "application/JSON",
@@ -12,7 +12,7 @@ export function signup(user) {
 }
 
 export function signin(user) {
-  return fetch("http://localhost:8080/signin", {
+  return fetch(process.env.REACT_APP_API_URL + "/signin", {
     method: "POST",
     headers: {
       Accept: "application/JSON",
@@ -28,7 +28,7 @@ export function signout(next) {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     next();
-    return fetch("http://localhost:8080/signout", {
+    return fetch(process.env.REACT_APP_API_URL + "/signout", {
       method: "GET"
     })
      .then(res => {
