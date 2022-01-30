@@ -8,3 +8,9 @@ export function getUser(userId){
   })
  .then((response) => {return response.json()})
 }
+
+export function getUsers(){
+  return fetch(process.env.REACT_APP_API_URL + "/users",
+  {method: "GET"}
+  ).then((response) => {return response.json()})
+}
