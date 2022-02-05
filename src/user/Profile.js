@@ -9,7 +9,6 @@ export default function Profile(){
   const [redirectToSignin, setRedirectToSignin] = useState(false)
   const {userId} = useParams()
   const profile =  JSON.parse(localStorage.getItem("user"));
-
    // useEffect is a hook that takes the same job as ComponentDidMount in class components. 
    // this function will therefore apply this function as soon as the component mounts.
    useEffect(()=> {
@@ -37,6 +36,7 @@ export default function Profile(){
             <p><b>Email: </b>{user.email}</p>  
             <p><b>ID: </b>{user._id}</p>
             <p><b>Joined: </b>{new Date(user.created).toDateString()}</p>
+            {user._id === JSON.parse(localStorage.getItem("user"))._id ? null : <Link className="btn ml-0 p-2" to="/users">back</Link>}
         </div>
         {isAuthenticated() && userId === profile._id && user.name === profile.name ? 
           <div className="col-md-6">
