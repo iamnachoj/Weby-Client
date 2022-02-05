@@ -14,3 +14,14 @@ export function getUsers(){
   {method: "GET"}
   ).then((response) => {return response.json()})
 }
+
+export function removeUser(userId, token){
+  console.log(userId)
+  return fetch(process.env.REACT_APP_API_URL + "/users/delete/" + userId, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}` // sending this, I am authorized to get the user
+    }
+  })
+ .then((response) => {return response.json()})
+}
