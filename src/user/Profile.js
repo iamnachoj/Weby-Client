@@ -47,7 +47,7 @@ export default function Profile(props){
               </div>
             {user._id === JSON.parse(localStorage.getItem("user"))._id ? null : <Link className="btn ml-0 p-2" to="/users">back</Link>}
         </div>
-        {isAuthenticated() && userId === profile._id && user.name === profile.name ? 
+        {isAuthenticated() && userId === profile._id ? 
           <div className="col-md-3">
           <div className="d-flex flex-row-reverse">
             <DeleteButton user={user}/>

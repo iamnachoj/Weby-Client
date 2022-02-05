@@ -4,6 +4,7 @@ import Signup from "./user/Signup";
 import Signin from "./user/Signin";
 import Profile from "./user/Profile";
 import Users from "./user/Users";
+import EditProfile from "./user/editprofile";
 
 export default function MainRouter(){
   return (
@@ -13,6 +14,7 @@ export default function MainRouter(){
       <Route path="signin" element={<Signin />} />
       <Route path="users" element={<Users />} />
       <Route path="users/:userId" element={<Profile/>} />
+      <Route path="/users/edit/:userId" element={<EditProfile/>}/>
     </Routes>
   )  
 }

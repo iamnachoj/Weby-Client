@@ -25,3 +25,17 @@ export function removeUser(userId, token){
   })
  .then((response) => {return response.json()})
 }
+
+export function updateUser(user, token){
+  return fetch(process.env.REACT_APP_API_URL + "/users/edit/" + user._id, {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}` // sending this, I am authorized to get the user
+    },
+    body: JSON.stringify(user)
+  })
+  .then((response) => {return response.json()})
+  .catch(err => console.log(err)) 
+}
