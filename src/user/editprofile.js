@@ -30,6 +30,13 @@ export default function EditProfile() {
    }
    function clickSubmit(event) {
     event.preventDefault();
+    if(user.password !== user.confirmPassword){
+      setUser({
+        ...user,
+        error: "passwords do not match"
+      })
+      return null
+    } else {
     const token = localStorage.getItem("token")
     updateUser(user, token)
      .then(data => {
@@ -38,6 +45,7 @@ export default function EditProfile() {
             redirect: true
           })
      })
+    }
    }
 
    if(user.redirect){
@@ -70,6 +78,7 @@ export default function EditProfile() {
                   <label htmlFor="confirmPassword" className="text-muted">Confirm new password</label>
                   <input onChange={handleChange} value={user.confirmPassword || ""} name="confirmPassword" id="confirmPassword" type="password" className="form-control" />
                 </div>
+                {user.error ? <div className="alert alert-danger">passwords do not match</div> : null}
                 <button onClick={clickSubmit} className="btn btn-sm ml-0">Update</button>
                 <Link to={`/users/${user._id}`} className="btn btn-sm btn-primary">go back</Link>
               </form>
