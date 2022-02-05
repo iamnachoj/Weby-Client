@@ -7,6 +7,7 @@ export default function Signup() {
       name: "",
       email: "",
       password: "",
+      confirmPassword: "",
       error: ""
     });
     
@@ -22,6 +23,13 @@ export default function Signup() {
 
     function submitData(event){
       event.preventDefault();
+      if(input.password !== input.confirmPassword){
+        setInput({
+          ...input,
+          error: "passwords do not match"
+        })
+        return null
+      }
       const user = input;
       signup(user).then(data => {
         if(data.error){
@@ -34,6 +42,7 @@ export default function Signup() {
             name: "",
             email: "",
             password: "",
+            confirmPassword: "",
             error: "",
             success: true
           })
@@ -55,6 +64,10 @@ export default function Signup() {
           <div className="form-group">
             <label htmlFor="password" className="text-muted">Password</label>
             <input onChange={handleChange} value={input.password} name="password" id="password" type="password" className="form-control" />
+          </div>
+          <div className="form-group">
+            <label htmlFor="confirmPassword" className="text-muted">Confirm password</label>
+            <input onChange={handleChange} value={input.confirmPassword} name="confirmPassword" id="confirmPassword" type="password" className="form-control" />
           </div>
           {input.error ? <div className="alert alert-danger">{input.error} </div> : null}
           {input.success ? <div className="alert alert-success">Successfully created! please <Link to="/signin">log in</Link></div> : null}
