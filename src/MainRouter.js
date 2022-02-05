@@ -12,7 +12,7 @@ export default function MainRouter(){
       <Route path="signup" element={<Signup />} />
       <Route path="signin" element={<Signin />} />
       <Route path="users" element={<Users />} />
-      <Route path="users/:userId" element={<Profile />} />
+      <Route path="users/:userId" element={<Profile/>} />
     </Routes>
   )  
 }

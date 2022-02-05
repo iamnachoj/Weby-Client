@@ -4,8 +4,9 @@ import {getUser} from './apiUser'
 import {Navigate} from "react-router-dom";
 import { isAuthenticated } from "../auth";
 import defaultpic from "../images/avatar.png"
+import DeleteButton from "./deletebutton";
 
-export default function Profile(){
+export default function Profile(props){
   const [user, setUser] = useState("");
   const [redirectToSignin, setRedirectToSignin] = useState(false)
   const {userId} = useParams()
@@ -21,7 +22,7 @@ export default function Profile(){
         setUser(data)
       } 
     })
-    }, []) // eslint-disable-line react-hooks/exhaustive-deps
+    }, [userId]) 
     
    if(redirectToSignin){
     return <Navigate to="/signin" />
@@ -49,7 +50,7 @@ export default function Profile(){
         {isAuthenticated() && userId === profile._id && user.name === profile.name ? 
           <div className="col-md-3">
           <div className="d-flex flex-row-reverse">
-            <Link to={`/users/delete/${user._id}`} className="btn btn-sm btn-danger">Delete</Link>
+            <DeleteButton user={user}/>
             <Link to={`/users/edit/${user._id}`} className="btn btn-sm">Edit</Link>
           </div>
           
