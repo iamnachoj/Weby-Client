@@ -21,12 +21,21 @@ export default function EditProfile() {
    }, [userId]) 
 
    function handleChange(event) {
-    let {value, name} = event.target;
-    setUser({
-      ...user,
-      error: "",
-      [name]: value
-    })
+    let {value, name, files} = event.target;
+    if(name === "avatar"){
+      setUser({
+        ...user,
+        error: "",
+        [name]: files[0]
+      })
+    } else {
+      setUser({
+        ...user,
+        error: "",
+        [name]: value
+      })
+    }
+    console.log(user)
    }
    function clickSubmit(event) {
     event.preventDefault();
@@ -65,6 +74,10 @@ export default function EditProfile() {
                 <div className="form-group">
                   <label htmlFor="name" className="text-muted">Name</label>
                   <input onChange={handleChange} value={user.name || ""} name="name" id="name" type="text" className="form-control" />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="avatar" className="text-muted">Avatar</label>
+                  <input onChange={handleChange} name="avatar" id="avatar" type="file" accept="image/*" className="form-control" />
                 </div>
                 <div className="form-group">
                   <label htmlFor="email" className="text-muted">Email</label>
