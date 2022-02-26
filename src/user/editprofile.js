@@ -6,6 +6,7 @@ import { updateUser } from "./apiUser"
 
 const userData = new FormData()
 export default function EditProfile() {
+   const [loading, setLoading] = useState(false)
    const [user, setUser] = useState({});
    const {userId} = useParams()
    useEffect(()=> {
@@ -20,7 +21,6 @@ export default function EditProfile() {
    }, [userId]) 
 
    function handleChange(event) {
-    console.log(userData)
     let name = event.target.name;
     let value = name === "avatar" ? event.target.files[0] : event.target.value;
     userData.set(name, value);
@@ -33,6 +33,7 @@ export default function EditProfile() {
    }
    function clickSubmit(event) {
     event.preventDefault();
+    setLoading(true)
     if(user.password !== user.confirmPassword){
       setUser({
         ...user,
@@ -86,6 +87,7 @@ export default function EditProfile() {
                   <input onChange={handleChange} value={user.confirmPassword || ""} name="confirmPassword" id="confirmPassword" type="password" className="form-control" />
                 </div>
                 {user.error ? <div className="alert alert-danger">passwords do not match</div> : null}
+                {loading ? <div className="alert alert-primary">Loading...</div>: null }
                 <button onClick={clickSubmit} className="btn btn-sm ml-0">Update</button>
                 <Link to={`/users/${user._id}`} className="btn btn-sm btn-primary">go back</Link>
               </form>
