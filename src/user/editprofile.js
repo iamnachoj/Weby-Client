@@ -4,10 +4,9 @@ import { useState, useEffect } from "react"
 import {getUser} from './apiUser'
 import { updateUser } from "./apiUser"
 
+const userData = new FormData()
 export default function EditProfile() {
-   const [user, setUser] = useState({
-   });
-
+   const [user, setUser] = useState({});
    const {userId} = useParams()
    useEffect(()=> {
     getUser(userId)
@@ -21,20 +20,15 @@ export default function EditProfile() {
    }, [userId]) 
 
    function handleChange(event) {
-    let {value, name, files} = event.target;
-    if(name === "avatar"){
-      setUser({
-        ...user,
-        error: "",
-        [name]: files[0]
-      })
-    } else {
-      setUser({
-        ...user,
-        error: "",
-        [name]: value
-      })
-    }
+    console.log(userData)
+    let name = event.target.name;
+    let value = name === "avatar" ? event.target.files[0] : event.target.value;
+    userData.set(name, value);
+    setUser({
+      ...user,
+      error: "",
+      [name]: value
+    })
     console.log(user)
    }
    function clickSubmit(event) {
@@ -47,10 +41,10 @@ export default function EditProfile() {
       return null
     } else {
     const token = localStorage.getItem("token")
-    updateUser(user, token)
+    updateUser(userId, userData, token)
      .then(data => {
           setUser({
-            _id: user._id,
+            _id: userId,
             redirect: true
           })
      })
