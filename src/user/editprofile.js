@@ -65,7 +65,7 @@ export default function EditProfile() {
    if(user.redirect){
      return <Navigate to={`/users/${user._id}`}/>
    }
-   const avatarUrl = user._id ? `${process.env.REACT_APP_API_URL}/users/avatar/${user._id}` : defaultpic
+   const avatarUrl = user._id ? `${process.env.REACT_APP_API_URL}/users/avatar/${user._id}?${new Date().getTime()}` : defaultpic
 
    return (
     <div className="container">

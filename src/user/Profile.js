@@ -28,7 +28,7 @@ export default function Profile(props){
     return <Navigate to="/signin" />
   }
 
-  const avatarUrl = user._id ? `${process.env.REACT_APP_API_URL}/users/avatar/${user._id}` : defaultpic
+  const avatarUrl = user._id ? `${process.env.REACT_APP_API_URL}/users/avatar/${user._id}?${new Date().getTime()}` : defaultpic
 
     return (
       <>
