@@ -31,12 +31,11 @@ export default function EditProfile() {
       error: "",
       [name]: value
     })
-    console.log(user)
    }
    function clickSubmit(event) {
     event.preventDefault();
     setLoading(true)
-    if(user.fileSize > 200000){
+    if(user.fileSize > 500000){
       setUser({
         ...user,
         error: "file is too big. maximum just 2 mb"
@@ -66,6 +65,8 @@ export default function EditProfile() {
    if(user.redirect){
      return <Navigate to={`/users/${user._id}`}/>
    }
+   const avatarUrl = user._id ? `${process.env.REACT_APP_API_URL}/users/avatar/${user._id}` : defaultpic
+
    return (
     <div className="container">
     <main className="jumbotron mt-5 row">
@@ -73,7 +74,7 @@ export default function EditProfile() {
            <h2 className="mb-5">Edit Profile</h2>
            <div className="row">
              <div className="col-md-5">
-               <img className="user-img-card-profile mb-5" src={defaultpic} alt="profile-pic" />
+               <img className="user-img-card-profile mb-5" src={avatarUrl} alt="profile-pic" />
              </div>
              <div className="col-md-7">
              <form>

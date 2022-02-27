@@ -28,6 +28,8 @@ export default function Profile(props){
     return <Navigate to="/signin" />
   }
 
+  const avatarUrl = user._id ? `${process.env.REACT_APP_API_URL}/users/avatar/${user._id}` : defaultpic
+
     return (
       <>
       <div className="container">
@@ -36,7 +38,7 @@ export default function Profile(props){
               <h2 className="mb-5">Profile</h2>
               <div className="row">
                 <div className="col-md-5">
-                  <img className="user-img-card-profile mb-5" src={defaultpic} alt="profile-pic" />
+                  <img className="user-img-card-profile mb-5" src={avatarUrl} alt="profile-pic" />
                 </div>
                 <div className="col-md-7">
                   <p><b>Username: </b>{user.name}</p>
