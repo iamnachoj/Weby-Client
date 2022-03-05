@@ -28,7 +28,7 @@ export default function Profile(props){
    if(redirectToSignin){
     return <Navigate to="/signin" />
   }
-  function isBeingFollowed() {
+  function following() {
     const match = user.followers.find(follower => {
       return follower._id === profile._id
     })
@@ -55,7 +55,7 @@ export default function Profile(props){
                   <p><b>Email: </b>{user.email}</p>  
                   <p><b>About {user.name}: </b>{user.about}</p>
                   <p><b>Joined: </b>{new Date(user.created).toDateString()}</p>
-                  {userId === profile._id ? <></> : <FollowButton isBeingFollowed={isBeingFollowed()}/>}
+                  {userId === profile._id ? <></> : <FollowButton following={following()}/>}
                 </div>
               </div>
             {user._id === JSON.parse(localStorage.getItem("user"))._id ? null : <Link className="btn ml-0 p-2" to="/users">back</Link>}

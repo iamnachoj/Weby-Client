@@ -3,7 +3,7 @@ import React from "react";
 export default function FollowButton(props) {
  return (
      <div className="d-inline-block mt-2">
-        { props.isBeingFollowed
+        { props.following
           ? 
             <button className="btn btn-sm btn-light">
               Unfollow
