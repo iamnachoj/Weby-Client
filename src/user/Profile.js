@@ -43,7 +43,7 @@ export default function Profile(props){
                 <div className="col-md-7">
                   <p><b>Username: </b>{user.name}</p>
                   <p><b>Email: </b>{user.email}</p>  
-                  <p><b>ID: </b>{user._id}</p>
+                  <p><b>About {user.name}: </b>{user.about}</p>
                   <p><b>Joined: </b>{new Date(user.created).toDateString()}</p>
                 </div>
               </div>

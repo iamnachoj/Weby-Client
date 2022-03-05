@@ -87,6 +87,10 @@ export default function EditProfile() {
                   <input onChange={handleChange} name="avatar" id="avatar" type="file" accept="image/*" className="form-control" />
                 </div>
                 <div className="form-group">
+                  <label htmlFor="about" className="text-muted">About</label>
+                  <textarea onChange={handleChange} value={user.about || ""} name="about" id="about" type="text" className="form-control" />
+                </div>
+                <div className="form-group">
                   <label htmlFor="email" className="text-muted">Email</label>
                   <input onChange={handleChange} readOnly value={user.email || ""} name="email" id="email" type="email" className="form-control"/>
                 </div>
