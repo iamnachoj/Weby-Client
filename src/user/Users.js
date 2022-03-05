@@ -5,7 +5,6 @@ import UserCard from "./UserCard";
 
 export default function Users() {
   const [users, setUsers] = useState([]);
-  console.log()
   useEffect(() => {
    getUsers()
    .then(data => {

@@ -5,9 +5,10 @@ import {Navigate} from "react-router-dom";
 import { isAuthenticated } from "../auth";
 import defaultpic from "../images/avatar.png"
 import DeleteButton from "./deletebutton";
+import FollowButton from "./FollowProfileButton";
 
 export default function Profile(props){
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState({followers: []});
   const [redirectToSignin, setRedirectToSignin] = useState(false)
   const {userId} = useParams()
   const profile =  JSON.parse(localStorage.getItem("user"));
@@ -27,7 +28,21 @@ export default function Profile(props){
    if(redirectToSignin){
     return <Navigate to="/signin" />
   }
+  console.log(user.followers)
+  console.log(user._id)
+  console.log(profile._id)
 
+  function isBeingFollowed() {
+    const match = user.followers.find(follower => {
+      return follower._id === profile._id
+    })
+    console.log(match)
+    if(match){
+      return true
+    }
+    return false
+  }
+  
   const avatarUrl = user._id ? `${process.env.REACT_APP_API_URL}/users/avatar/${user._id}?${new Date().getTime()}` : defaultpic
 
     return (
@@ -45,6 +60,7 @@ export default function Profile(props){
                   <p><b>Email: </b>{user.email}</p>  
                   <p><b>About {user.name}: </b>{user.about}</p>
                   <p><b>Joined: </b>{new Date(user.created).toDateString()}</p>
+                  {userId === profile._id ? <></> : <FollowButton isBeingFollowed={isBeingFollowed()}/>}
                 </div>
               </div>
             {user._id === JSON.parse(localStorage.getItem("user"))._id ? null : <Link className="btn ml-0 p-2" to="/users">back</Link>}

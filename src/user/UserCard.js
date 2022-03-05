@@ -3,7 +3,6 @@ import defaultpic from "../images/avatar.png"
 
 export default function UserCard(props){
   const userLink = "/users/" + props.user._id
-  console.log(props.user)
   const avatarUrl = props.user.avatar ? `${process.env.REACT_APP_API_URL}/users/avatar/${props.user._id}?${new Date().getTime()}` : defaultpic
   return (
     <div to="/" className="d-flex user-card mt-2 mb-2 p-3" key={props.i}>
