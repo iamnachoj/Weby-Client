@@ -28,15 +28,10 @@ export default function Profile(props){
    if(redirectToSignin){
     return <Navigate to="/signin" />
   }
-  console.log(user.followers)
-  console.log(user._id)
-  console.log(profile._id)
-
   function isBeingFollowed() {
     const match = user.followers.find(follower => {
       return follower._id === profile._id
     })
-    console.log(match)
     if(match){
       return true
     }
