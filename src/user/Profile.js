@@ -55,7 +55,7 @@ export default function Profile(props){
                   <p><b>Email: </b>{user.email}</p>  
                   <p><b>About {user.name}: </b>{user.about}</p>
                   <p><b>Joined: </b>{new Date(user.created).toDateString()}</p>
-                  {userId === profile._id ? <></> : <FollowButton following={following()}/>}
+                  {userId === profile._id ? <></> : <FollowButton userId={userId} followId={profile._id} following={following()}/>}
                 </div>
               </div>
             {user._id === JSON.parse(localStorage.getItem("user"))._id ? null : <Link className="btn ml-0 p-2" to="/users">back</Link>}
