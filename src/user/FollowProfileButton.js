@@ -1,9 +1,10 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 export default function FollowButton(props) {
   const token = localStorage.getItem("token")
   const userId = props.userId; // the profile that's been viewed
   const followId = props.followId //the user logged in
+  const [loading, setLoading] = useState(false)
 
  function follow(){
    console.log("follow user")
@@ -33,18 +34,33 @@ export default function FollowButton(props) {
   .then((response) => {return response.json()})
   .catch(err => console.log(err)) 
  }
+ function chooseOption(){
+   props.following
+   ?
+   unfollow()
+   :
+   follow()
+ }
+ function handleClick(){
+   chooseOption();
+   setLoading(true)
+   setTimeout(() => {
+     window.location.reload(true)
+   },1000)
+ }
  return (
      <div className="d-inline-block mt-2">
         { props.following
           ? 
-            <button onClick={unfollow} className="btn btn-sm btn-light">
+            <button onClick={handleClick} className="btn btn-sm btn-light">
               Unfollow
             </button> 
           :
-            <button onClick={follow} className="btn btn-sm btn-info">
+            <button onClick={handleClick} className="btn btn-sm btn-info">
               Follow
             </button>
-        }  
+        }
+        {loading ? <div className="alert alert-primary mt-1">Loading...</div>: null }
      </div>
  )
 }
