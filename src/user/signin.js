@@ -53,22 +53,34 @@ export default function Signin() {
   }
 
   return (
-    <main className="container">
-        <h2 className="mt-5 mb-5">Log in</h2>
-        <form>
-          <div className="form-group">
-            <label htmlFor="email" className="text-muted">Email</label>
-            <input onChange={handleChange} value={input.email} name="email" id="email" type="email" className="form-control" />
-          </div>
-          <div className="form-group">
-            <label htmlFor="password" className="text-muted">Password</label>
-            <input onChange={handleChange} value={input.password} name="password" id="password" type="password" className="form-control" />
-          </div>
-          {input.error ? <div className="alert alert-danger">{input.error} </div> : null}
-          {input.redirect ? <div className="alert alert-success">Success! loading...</div> : null}
-          {input.loading ? <div className="alert alert-primary">Loading...</div>: null }
-          <button onClick={submitData}className="btn ml-0">Sign up</button>
-        </form>
-      </main>
+
+    <main className="container mt-5">
+      <div className="row">
+        <div className="col-md-6">
+            <h1 className="mt-5">Welcome to Weby!</h1>
+            <h2 className="mt-5">The Social Network</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse bibendum in mi eu ultrices. Maecenas in risus sit amet 
+            tellus sollicitudin maximus vulputate vel nisi. Fusce vel arcu porttitor, sagittis augue sit amet, ullamcorper turpis.
+            </p>
+        </div>
+        <div className="col-md-6 mt-2">
+          <h2 className="mt-5 mb-5">Log in</h2>
+          <form>
+            <div className="form-group">
+              <label htmlFor="email" className="text-muted">Email</label>
+              <input onChange={handleChange} value={input.email} name="email" id="email" type="email" className="form-control" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="password" className="text-muted">Password</label>
+              <input onChange={handleChange} value={input.password} name="password" id="password" type="password" className="form-control" />
+            </div>
+            {input.error ? <div className="alert alert-danger">{input.error} </div> : null}
+            {input.redirect ? <div className="alert alert-success">Success! loading...</div> : null}
+            {input.loading ? <div className="alert alert-primary">Loading...</div>: null }
+            <button onClick={submitData}className="btn ml-0">Sign up</button>
+          </form>
+        </div>
+     </div>
+   </main>
   );
 }

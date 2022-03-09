@@ -9,7 +9,7 @@ import EditProfile from "./user/editprofile";
 export default function MainRouter(){
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Signin />} />
       <Route path="signup" element={<Signup />} />
       <Route path="signin" element={<Signin />} />
       <Route path="users" element={<Users />} />
