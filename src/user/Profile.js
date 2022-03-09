@@ -6,6 +6,7 @@ import { isAuthenticated } from "../auth";
 import defaultpic from "../images/avatar.png"
 import DeleteButton from "./deletebutton";
 import FollowButton from "./FollowProfileButton";
+import ProfileTabs from "./ProfileTabs";
 
 export default function Profile(props){
   const [user, setUser] = useState({followers: []});
@@ -49,6 +50,7 @@ export default function Profile(props){
               <div className="row">
                 <div className="col-md-5">
                   <img className="user-img-card-profile mb-5" src={avatarUrl} alt="profile-pic" />
+                  <ProfileTabs className="mb-5" followers={user.followers} following={user.following}/>
                 </div>
                 <div className="col-md-7">
                   <p><b>Username: </b>{user.name}</p>
@@ -58,7 +60,7 @@ export default function Profile(props){
                   {userId === profile._id ? <></> : <FollowButton userId={userId} followId={profile._id} following={following()}/>}
                 </div>
               </div>
-            {user._id === JSON.parse(localStorage.getItem("user"))._id ? null : <Link className="btn ml-0 p-2" to="/users">back</Link>}
+            {user._id === JSON.parse(localStorage.getItem("user"))._id ? null : <Link className="btn mt-5 ml-0 p-2" to="/users">back</Link>}
         </div>
         {isAuthenticated() && userId === profile._id ? 
           <div className="col-md-3">
