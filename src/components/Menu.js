@@ -14,12 +14,12 @@ export default function Menu(){
           {isAuthenticated()
           ?
           <>
-            <Link className="btn btn-link btn-sm mr-0 p-1" to="/users"><i className="fas fa-user-plus blackicon icon-lg"></i></Link>
+            <Link className="btn btn-link btn-md px-2 ml-1" to="/users">Users</Link>
+            <Link className="btn btn-link btn-md px-2 ml-1" to="/post/create">Post</Link>
             <Link to={`/users/${user._id}`} className="btn btn-success btn-md px-2 ml-4 me-1">
               <i className="far fa-user mr-2"></i>
               {user.name}
             </Link>
-            <Link className="btn btn-link btn-sm mr-0 p-1" to="/post/create">New Post</Link>
             <button onClick={() => {signout(() => {navigate("/")})}} className="btn btn-link btn-md px-2 ml-2 me-1">Sign out</button>
           </>
           :
