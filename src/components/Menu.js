@@ -19,6 +19,7 @@ export default function Menu(){
               <i className="far fa-user mr-2"></i>
               {user.name}
             </Link>
+            <Link className="btn btn-link btn-sm mr-0 p-1" to="/post/create">New Post</Link>
             <button onClick={() => {signout(() => {navigate("/")})}} className="btn btn-link btn-md px-2 ml-2 me-1">Sign out</button>
           </>
           :
