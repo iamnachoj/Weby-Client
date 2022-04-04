@@ -66,9 +66,8 @@ export default function NewPost() {
               setLoading(false)
             }
           else {
-            console.log("New post:", data)
             setLoading(false)
-            setPost({...post, created: true})
+            setPost({...post, title: "", body: "", photo: "", created: true})
           }
      })
     }
@@ -105,7 +104,7 @@ export default function NewPost() {
                 </div>
                 {post.error ? <div className="alert alert-danger">{post.error}</div> : null}
                 {loading ? <div className="alert alert-primary">Loading...</div>: null }
-                {post.created ? <div className="alert alert-success">Successfully created!</div>: null }
+                {post.created ? <div className="alert alert-success">Successfully created! click <Link to="/">here</Link> to see post.</div> : null }
                 <button onClick={clickSubmit} className="btn btn-sm ml-0">Create new post</button>
                 <Link to={`/users/${post.user._id}`} className="btn btn-sm btn-primary">go back</Link>
               </form>

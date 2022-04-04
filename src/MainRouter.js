@@ -10,7 +10,8 @@ import NewPost from "./post/NewPost";
 export default function MainRouter(){
   return (
     <Routes>
-      <Route path="/" element={<Signin />} />
+      {/* implement different route from "/" path depending on whether user is logged in or not */}
+      <Route path="/" element={<Signin />} /> 
       <Route path="signup" element={<Signup />} />
       <Route path="signin" element={<Signin />} />
       <Route path="users" element={<Users />} />
