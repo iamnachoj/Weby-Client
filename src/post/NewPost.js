@@ -1,4 +1,3 @@
-import defaultpic from "../images/avatar.png"
 import { Link, Navigate } from "react-router-dom"
 import { useState, useEffect } from "react"
 import {create} from './apiPost'
@@ -21,7 +20,7 @@ export default function NewPost() {
         ...post,
         user: user
     })
-   }, []) 
+   }, [])// eslint-disable-line react-hooks/exhaustive-deps 
 
    function handleChange(event) {
     let name = event.target.name;

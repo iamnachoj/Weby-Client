@@ -1,11 +1,12 @@
 import {Routes, Route} from "react-router-dom";
-import Home from "./components/Home";
 import Signup from "./user/Signup";
 import Signin from "./user/Signin";
 import Profile from "./user/Profile";
 import Users from "./user/Users";
+import Posts from "./post/posts";
 import EditProfile from "./user/editprofile";
 import NewPost from "./post/NewPost";
+import { isAuthenticated } from "./auth";
 
 export default function MainRouter(){
   return (
@@ -14,6 +15,7 @@ export default function MainRouter(){
       <Route path="/" element={<Signin />} /> 
       <Route path="signup" element={<Signup />} />
       <Route path="signin" element={<Signin />} />
+      <Route path="posts" element={<Posts />} />
       <Route path="users" element={<Users />} />
       <Route path="users/:userId" element={<Profile/>} />
       <Route path="/users/edit/:userId" element={<EditProfile/>}/>

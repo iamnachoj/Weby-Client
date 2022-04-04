@@ -49,7 +49,7 @@ export default function Signin() {
   }
 
   if(input.redirect){
-    return <Navigate to="/signedin" />
+    return <Navigate to="/posts" />
   }
 
   return (

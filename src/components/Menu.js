@@ -7,8 +7,12 @@ export default function Menu(){
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container">
+        {isAuthenticated()
+        ?
+        <Link to="/posts" className="navbar-brand me-2"><h1 style={{fontFamily: "'Geo', sans-serif", fontSize: "3rem"}}>Weby</h1></Link>
+        :
         <Link to="/" className="navbar-brand me-2"><h1 style={{fontFamily: "'Geo', sans-serif", fontSize: "3rem"}}>Weby</h1></Link>
-
+      }
         <div>
           <div className="d-flex align-items-center">
           {isAuthenticated()

@@ -12,3 +12,9 @@ export function create(userId, token, post){
       })
       .catch(err => console.log(err));
 }
+
+export function getPosts(){
+    return fetch(process.env.REACT_APP_API_URL + "/posts",
+    {method: "GET"}
+    ).then((response) => {return response.json()})
+  }
