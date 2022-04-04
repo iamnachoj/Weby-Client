@@ -73,22 +73,17 @@ export default function NewPost() {
     }
    }
 
-//    if(user.redirect){
-//      return <Navigate to={`/users/${user._id}`}/>
-//    }
-
-//    const photoUrl = post._id ? `${process.env.REACT_APP_API_URL}/users/avatar/${user._id}?${new Date().getTime()}` : defaultpic
+   if(post.created){
+     return <Navigate to={`/`}/>
+   }
 
    return (
     <div className="container">
     <main className="jumbotron mt-5 row">
      <div className="col-md-9">
            <h2 className="mb-5">New Post</h2>
-           <div className="row">
-             {/* <div className="col-md-5">
-               <img className="user-img-card-profile mb-5" src={photoUrl} alt="profile-pic" />
-             </div> */}
-             <div className="col-md-7">
+           <div>
+             <div>
              <form>
                 <div className="form-group">
                   <label htmlFor="title" className="text-muted">Title</label>
@@ -103,7 +98,7 @@ export default function NewPost() {
                   <textarea onChange={handleChange} value={post.body} name="body" id="body" type="text" className="form-control" />
                 </div>
                 {post.error ? <div className="alert alert-danger">{post.error}</div> : null}
-                {loading ? <div className="alert alert-primary">Loading...</div>: null }
+                {loading ? <div className="alert alert-primary">Creating post...</div>: null }
                 {post.created ? <div className="alert alert-success">Successfully created! click <Link to="/">here</Link> to see post.</div> : null }
                 <button onClick={clickSubmit} className="btn btn-sm ml-0">Create new post</button>
                 <Link to={`/users/${post.user._id}`} className="btn btn-sm btn-primary">go back</Link>
