@@ -73,7 +73,7 @@ export default function NewPost() {
    }
 
    if(post.created){
-     return <Navigate to={`/`}/>
+     return <Navigate to={`/posts`}/>
    }
 
    return (
