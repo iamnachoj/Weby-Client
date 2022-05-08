@@ -1,7 +1,7 @@
 import {Link} from "react-router-dom";
 
 export default function PostCard(props){
-  const userLink = "/users/" + props.post.postedBy._id
+  const userLink = props.post.postedBy ? "/users/" + props.post.postedBy._id : "/posts"
   const postLink = "/posts/" + props.post._id
   const photoUrl = props.post.photo ? `${process.env.REACT_APP_API_URL}/users/avatar/${props.user._id}?${new Date().getTime()}` : null
   console.log(props.post.created)
@@ -12,7 +12,7 @@ export default function PostCard(props){
       <p>{props.post.body}</p>
       <div className="mark mb-2">
         <p className="mr-2 font-italic small" style={{display: "inline"}}>Posted by: {" "}
-         <Link to={userLink}>{props.post.postedBy.name}</Link> {" "}
+         <Link to={userLink}>{props.post.postedBy ? props.post.postedBy.name : " Unknown"}</Link> {" "}
          on  {new Date(props.post.created).toDateString()} 
         </p>
         <br/>
