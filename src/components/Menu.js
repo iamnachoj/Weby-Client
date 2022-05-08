@@ -9,7 +9,7 @@ export default function Menu(){
       <div className="container">
         {isAuthenticated()
         ?
-        <Link to="/posts" className="navbar-brand me-2"><h1 style={{fontFamily: "'Geo', sans-serif", fontSize: "3rem"}}>Weby</h1></Link>
+        <Link to="/posts" className="navbar-brand me-2"><h1 className="brand" style={{fontFamily: "'Geo', sans-serif"}}>Weby</h1></Link>
         :
         <Link to="/" className="navbar-brand me-2"><h1 style={{fontFamily: "'Geo', sans-serif", fontSize: "3rem"}}>Weby</h1></Link>
       }
