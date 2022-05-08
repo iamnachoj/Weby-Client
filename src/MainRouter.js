@@ -6,7 +6,6 @@ import Users from "./user/Users";
 import Posts from "./post/posts";
 import EditProfile from "./user/editprofile";
 import NewPost from "./post/NewPost";
-import { isAuthenticated } from "./auth";
 
 export default function MainRouter(){
   return (

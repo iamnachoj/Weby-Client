@@ -9,7 +9,7 @@ export default function PostCard(props){
     <div to="/" className="post-card mt-4 mb-2 p-3" key={props.i}>
       <h3 className="mb-3" style={{display: "block"}}>{props.post.title}</h3>
       <p>{props.post.body.length > 150 ? props.post.body.substring(0, 150) + " [...]" : props.post.body}</p>
-      {photoUrl ? <img className="mb-3 img-thumbnail" style={{height: "200px", width: "auto"}} src={photoUrl} alt="post photo"/> : null }
+      {photoUrl ? <img className="mb-3 img-thumbnail" style={{height: "200px", width: "auto"}} src={photoUrl} alt=""/> : null }
       <div className="mark mb-2">
         <p className="mr-2 font-italic small" style={{display: "inline"}}>Posted by: {" "}
          <Link to={userLink}>{props.post.postedBy ? props.post.postedBy.name : " Unknown"}</Link> {" "}
