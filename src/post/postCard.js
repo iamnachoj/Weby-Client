@@ -9,15 +9,15 @@ export default function PostCard(props){
     <div to="/" className="post-card mt-4 mb-4 p-3" key={props.i}>
       {props.post.photo ? <img src={photoUrl} alt=""/> : null}
       <h3 className="mb-3" style={{display: "block"}}>{props.post.title}</h3>
-      <p>{props.post.body}</p>
+      <p>{props.post.body.length > 150 ? props.post.body.substring(0, 150) + " [...]" : props.post.body}</p>
       <div className="mark mb-2">
         <p className="mr-2 font-italic small" style={{display: "inline"}}>Posted by: {" "}
          <Link to={userLink}>{props.post.postedBy ? props.post.postedBy.name : " Unknown"}</Link> {" "}
-         on  {new Date(props.post.created).toDateString()} 
+         on  {new Date(props.post.created).toDateString()} at {new Date(props.post.created).toLocaleTimeString()}
         </p>
         <br/>
       </div>
-      <Link className="btn btn-sm ml-auto p-2 " to={postLink}>open</Link>
+      <Link className="btn btn-sm ml-auto p-2 " to={postLink}>Read more</Link>
     </div>
   )
 }
