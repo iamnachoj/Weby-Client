@@ -77,7 +77,7 @@ export default function Signin() {
             {input.error ? <div className="alert alert-danger">{input.error} </div> : null}
             {input.redirect ? <div className="alert alert-success">Success! loading...</div> : null}
             {input.loading ? <div className="alert alert-primary">Loading...</div>: null }
-            <button onClick={submitData}className="btn ml-0">Sign up</button>
+            <button onClick={submitData}className="btn ml-0">Sign in</button>
           </form>
         </div>
      </div>
