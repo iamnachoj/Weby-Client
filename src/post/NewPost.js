@@ -55,7 +55,6 @@ export default function NewPost() {
     } else {
     const token = localStorage.getItem("token");
     const user = localStorage.getItem("user");
-    console.log(user)
     const userId = JSON.parse(user)._id;
 
     create(userId, token, postData)
