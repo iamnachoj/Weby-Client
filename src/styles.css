@@ -3,7 +3,9 @@
 nav {
   background-color: #AFA;
 }
-
+.container {
+  width: 60%
+}
 .btn {
   background-color:#AFA;
 }
@@ -47,12 +49,19 @@ p {
   border-radius: 50%;
   display: inline;
 }
-
+@media screen and (max-width: 1002px) {
+  .container{
+    width: 90%
+  }
+}
 @media screen and (max-width: 602px) {
   .brand {
     font-size: 2rem;
   }
   .menu-btn {
     font-size: 1px;
+  }
+  .container{
+    width: 100%
   }
 }
