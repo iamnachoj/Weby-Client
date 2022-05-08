@@ -48,8 +48,11 @@ p {
   display: inline;
 }
 
-@media screen and (max-width: 582px) {
+@media screen and (max-width: 602px) {
   .brand {
     font-size: 2rem;
+  }
+  .menu-btn {
+    font-size: 1px;
   }
 }
