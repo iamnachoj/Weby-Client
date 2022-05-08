@@ -19,7 +19,7 @@ export default function Posts() {
 
   return (
     <div className="container">
-      <h2 className="mt-5 mb-5">Recent posts</h2>
+      <h2 className="mt-5 mb-5 font-weight-bold">Recent posts</h2>
           {posts.map((post, i) => {
             return <PostCard key={i} post={post}/>
             })
