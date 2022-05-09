@@ -16,7 +16,6 @@ export default function Posts() {
    }
    )
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
-
   return (
     <div className="container">
       <h2 className="mt-5 mb-5 font-weight-bold">Recent posts</h2>

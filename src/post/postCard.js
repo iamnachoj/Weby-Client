@@ -4,7 +4,6 @@ export default function PostCard(props){
   const userLink = props.post.postedBy ? "/users/" + props.post.postedBy._id : "/posts"
   const postLink = "/posts/" + props.post._id
   const photoUrl = props.post.photo ? `${process.env.REACT_APP_API_URL}/posts/photo/${props.post._id}` : null
-  console.log(props.post.photo)
   return (
     <div to="/" className="post-card mt-4 mb-2 p-3" key={props.i}>
       <h3 className="mb-3" style={{display: "block"}}>{props.post.title}</h3>
