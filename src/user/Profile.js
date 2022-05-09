@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import {Link, useParams } from "react-router-dom";
+import {Link, useParams, useNavigate } from "react-router-dom";
 import {getUser} from './apiUser'
 import {Navigate} from "react-router-dom";
 import { isAuthenticated } from "../auth";
@@ -12,6 +12,7 @@ export default function Profile(props){
   const [user, setUser] = useState({followers: []});
   const [redirectToSignin, setRedirectToSignin] = useState(false)
   const {userId} = useParams()
+  const navigate = useNavigate();
   const profile =  JSON.parse(localStorage.getItem("user"));
    // useEffect is a hook that takes the same job as ComponentDidMount in class components. 
    // this function will therefore apply this function as soon as the component mounts.
@@ -60,7 +61,7 @@ export default function Profile(props){
                   {userId === profile._id ? <></> : <FollowButton userId={userId} followId={profile._id} following={following()}/>}
                 </div>
               </div>
-            {user._id === JSON.parse(localStorage.getItem("user"))._id ? null : <Link className="btn mt-5 ml-0 p-2" to="/users">back</Link>}
+            {user._id === JSON.parse(localStorage.getItem("user"))._id ? null : <button className="btn btn-sm"onClick={() => navigate(-1)}>Go back</button>}
         </div>
         {isAuthenticated() && userId === profile._id ? 
           <div className="col-md-3">
