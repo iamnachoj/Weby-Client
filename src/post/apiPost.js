@@ -18,3 +18,10 @@ export function getPosts(){
     {method: "GET"}
     ).then((response) => {return response.json()})
   }
+
+  export function getPost(postId){
+    return fetch(process.env.REACT_APP_API_URL + "/posts/" + postId, {
+      method: "GET"
+    })
+   .then((response) => {return response.json()})
+  }
