@@ -4,6 +4,7 @@ import {getPost} from './apiPost'
 
 export default function SinglePost(){
     const [post, setPost] = useState({});
+    const [loading, setLoading] = useState(true)
     const {postId} = useParams()
     useEffect(()=> {
         getPost(postId)
@@ -12,6 +13,7 @@ export default function SinglePost(){
            console.log(data.error)
          } else{
            setPost(data)
+           setLoading(false)
          } 
        })
        }, [postId])
@@ -32,6 +34,7 @@ export default function SinglePost(){
         </div>
         <Link className="btn mt-5 ml-0 p-2" to="/posts">back</Link>
         </div>
+        {loading ? <div className="alert alert-primary">Loading...</div>: null }
       </div>  
     )
 }
