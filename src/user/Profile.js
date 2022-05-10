@@ -45,24 +45,26 @@ export default function Profile(props){
     return (
       <>
       <div className="container">
-       <main className="jumbotron mt-5 row">
-        <div className="col-md-9">
-              <h2 className="mb-5">Profile</h2>
-              <div className="row">
-                <div className="col-md-5">
-                  <img className="user-img-card-profile mb-5" src={avatarUrl} alt="profile-pic" />
-                  <ProfileTabs className="mb-5" followers={user.followers} following={user.following}/>
+      {!user.name
+       ? <div className="alert alert-primary mt-5">Loading...</div> 
+       :  <main className="jumbotron mt-5 row">
+           <div className="col-md-9">
+            <h2 className="mb-5">Profile</h2>
+            <div className="row">
+                  <div className="col-md-5">
+                    <img className="user-img-card-profile mb-5" src={avatarUrl} alt="profile-pic" />
+                    <ProfileTabs className="mb-5" followers={user.followers} following={user.following}/>
+                  </div>
+                  <div className="col-md-7">
+                    <p><b>Username: </b>{user.name}</p>
+                    <p><b>Email: </b>{user.email}</p>  
+                    <p><b>About {user.name}: </b>{user.about}</p>
+                    <p><b>Joined: </b>{new Date(user.created).toDateString()}</p>
+                    {userId === profile._id ? <></> : <FollowButton userId={userId} followId={profile._id} following={following()}/>}
+                  </div>
                 </div>
-                <div className="col-md-7">
-                  <p><b>Username: </b>{user.name}</p>
-                  <p><b>Email: </b>{user.email}</p>  
-                  <p><b>About {user.name}: </b>{user.about}</p>
-                  <p><b>Joined: </b>{new Date(user.created).toDateString()}</p>
-                  {userId === profile._id ? <></> : <FollowButton userId={userId} followId={profile._id} following={following()}/>}
-                </div>
-              </div>
-            {user._id === JSON.parse(localStorage.getItem("user"))._id ? null : <button className="btn btn-sm"onClick={() => navigate(-1)}>Go back</button>}
-        </div>
+              {user._id === JSON.parse(localStorage.getItem("user"))._id ? null : <button className="btn btn-sm"onClick={() => navigate(-1)}>Go back</button>}
+         </div> 
         {isAuthenticated() && userId === profile._id ? 
           <div className="col-md-3">
           <div className="d-flex flex-row-reverse">
@@ -74,7 +76,7 @@ export default function Profile(props){
         :
         <></>
         }
-       </main>
+       </main>}
       </div>
      </>
     )
