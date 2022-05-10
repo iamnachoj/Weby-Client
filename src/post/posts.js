@@ -5,6 +5,7 @@ import PostCard from "./postCard";
 
 export default function Posts() {
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true)
   useEffect(() => {
    getPosts()
    .then(data => {
@@ -12,6 +13,7 @@ export default function Posts() {
       console.log(data.error)
     } else{
       setPosts(data)
+      setLoading(false)
     } 
    }
    )
@@ -23,6 +25,7 @@ export default function Posts() {
             return <PostCard key={i} post={post}/>
             })
           }
+    {loading ? <div className="alert alert-primary">Loading...</div>: null }
     </div>
   )
 }

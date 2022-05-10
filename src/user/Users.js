@@ -5,6 +5,7 @@ import UserCard from "./UserCard";
 
 export default function Users() {
   const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true)
   useEffect(() => {
    getUsers()
    .then(data => {
@@ -12,6 +13,7 @@ export default function Users() {
       console.log(data.error)
     } else{
       setUsers(data)
+      setLoading(false)
     } 
    }
    )
@@ -25,6 +27,7 @@ export default function Users() {
               return null
             }
             return <UserCard key={i} user={user}/>})}
+    {loading ? <div className="alert alert-primary">Loading...</div>: null }
     </div>
   )
 }
