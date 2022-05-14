@@ -12,8 +12,9 @@ export default function PostCard(props){
       <div className="mark mb-2">
         <p className="mr-2 font-italic small" style={{display: "inline"}}>Posted by: {" "}
          <Link to={userLink}>{props.post.postedBy ? props.post.postedBy.name : " Unknown"}</Link> {" "}
-         on  {new Date(props.post.created).toDateString()} at {new Date(props.post.created).toLocaleTimeString()}
+         on  {new Date(props.post.created).toDateString()} at {new Date(props.post.created).toLocaleTimeString()} 
         </p>
+        {props.post.updated ? <p style={{color: "red", fontSize: "0.9rem", display:"inline", height: "1px", marginBottom:"0px"}}> (Edited {new Date(props.post.updated).toDateString()} at {new Date(props.post.updated).toLocaleTimeString()}).</p> : <></>}
         <br/>
       </div>
       <Link className="btn btn-sm ml-auto p-2 " to={postLink}>Read more</Link>

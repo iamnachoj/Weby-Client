@@ -1,9 +1,10 @@
 import { useParams, useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react"
-import { getPost } from "./apiPost"
+import { getPost, updatePost } from "./apiPost"
 
 const postData = new FormData()
 export default function EditPost(){
+  const token = localStorage.getItem("token")
   const {postId} = useParams()
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false)
@@ -45,9 +46,20 @@ export default function EditPost(){
             setLoading(false)
             return null
         }
+        updatePost(postId, postData, token)
+        .then(data => {
+            setPost({
+              _id: postId,
+              redirect: true
+            })
+       })
     }
 
+    if(post.redirect){
+        navigate(-1)
+      }
 
+    // console.log(post)
   return (
     <div className="container">
         <main className="jumbotron mt-5 row">
