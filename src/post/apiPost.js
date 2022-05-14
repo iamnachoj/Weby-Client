@@ -25,3 +25,14 @@ export function getPosts(){
     })
    .then((response) => {return response.json()})
   }
+
+  export function getPostsByUser(userId, token){
+    return fetch(process.env.REACT_APP_API_URL + "/posts/by/" + userId,
+    {method: "GET",
+     headers: {
+        Accept: "Application/json",
+        'Content-Type': "Application/json",
+        Authorization: `Bearer ${token}`
+      }}
+    ).then((response) => {return response.json()})
+  }

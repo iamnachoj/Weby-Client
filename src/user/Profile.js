@@ -1,19 +1,23 @@
 import { useEffect, useState } from "react";
 import {Link, useParams, useNavigate } from "react-router-dom";
 import {getUser} from './apiUser'
+import { getPostsByUser } from "../post/apiPost";
 import {Navigate} from "react-router-dom";
 import { isAuthenticated } from "../auth";
 import defaultpic from "../images/avatar.png"
 import DeleteButton from "./deletebutton";
 import FollowButton from "./FollowProfileButton";
 import ProfileTabs from "./ProfileTabs";
+import PostCard from "../post/postCard";
 
 export default function Profile(props){
   const [user, setUser] = useState({followers: []});
+  const [posts, setPosts] = useState([]);
   const [redirectToSignin, setRedirectToSignin] = useState(false)
   const {userId} = useParams()
   const navigate = useNavigate();
   const profile =  JSON.parse(localStorage.getItem("user"));
+  const token = localStorage.getItem("token")
    // useEffect is a hook that takes the same job as ComponentDidMount in class components. 
    // this function will therefore apply this function as soon as the component mounts.
    useEffect(()=> {
@@ -26,6 +30,17 @@ export default function Profile(props){
       } 
     })
     }, [userId]) 
+  
+    useEffect(()=> {
+      getPostsByUser(userId, token)
+      .then(data => {
+       if(data.error){
+         setRedirectToSignin(true)
+       } else{
+         setPosts(data)
+       } 
+     })
+     }, [userId]) 
     
    if(redirectToSignin){
     return <Navigate to="/signin" />
@@ -39,9 +54,7 @@ export default function Profile(props){
     }
     return false
   }
-  
   const avatarUrl = user._id ? `${process.env.REACT_APP_API_URL}/users/avatar/${user._id}?${new Date().getTime()}` : defaultpic
-
     return (
       <>
       <div className="container">
@@ -76,7 +89,20 @@ export default function Profile(props){
         :
         <></>
         }
-       </main>}
+       </main>
+       }
+        <div className="mt-5 row">
+        {posts.length 
+         ? <div className="col-md-9">
+            <h2>{user.name}'s posts</h2>
+              <hr className="mb-5"></hr>
+              {posts.map((post, i) => {
+                return <PostCard key={i} post={post}/>
+                })
+              }
+           </div>
+         : <></>}
+        </div>
       </div>
      </>
     )
