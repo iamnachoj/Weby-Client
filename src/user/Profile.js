@@ -95,7 +95,7 @@ export default function Profile(props){
         <div className="mt-5">
           {posts.length 
           ? <div>
-              <h2>{user.name}'s posts</h2>
+              <h2>Posts by {user.name}</h2>
               <hr className="mb-5"></hr>
                   {posts.map((post, i) => {
                     return <PostCard key={i} post={post}/>
