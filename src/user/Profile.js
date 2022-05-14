@@ -82,7 +82,6 @@ export default function Profile(props){
               <div className="d-flex flex-row-reverse">
                 <DeleteButton user={user}/>
                 <Link to={`/users/edit/${user._id}`} className="btn btn-sm">Edit</Link>
-                <Link className="btn btn-primary btn-sm" to="/post/create">post</Link>
               </div>
             </div>
           :<div className="col-md-3">
@@ -95,7 +94,16 @@ export default function Profile(props){
         <div className="mt-5">
           {posts.length 
           ? <div>
-              <h2>Posts by {user.name}</h2>
+              <h2 style={{display: "inline"}}>Posts by {user.name}</h2>
+              {
+                  isAuthenticated() && userId === profile._id
+                   ? <div style={{display: "inline"}}>
+                        <div style={{marginTop: "-35px"}} className="d-flex flex-row-reverse">
+                         <Link className="btn btn-sm mt-0 btn-primary" to="/post/create">new Post</Link>
+                        </div>
+                     </div>
+                   : <></>
+                  }
               <hr className="mb-5"></hr>
                   {posts.map((post, i) => {
                     return <PostCard key={i} post={post}/>

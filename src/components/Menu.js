@@ -18,8 +18,8 @@ export default function Menu(){
           {isAuthenticated()
           ?
           <>
-            <Link className="btn btn-link btn-md px-1 ml-1" to="/users">Users</Link>
-            <Link className="btn btn-link btn-md px-1 ml-1" to="/post/create">new Post</Link>
+            <Link to="/posts" className="btn btn-link btn-md px-1 ml-1">Posts</Link>
+            <Link className="btn btn-link btn-md px-1 ml-1" to="/users">Users</Link>  
             <Link to={`/users/${user._id}`} className="btn btn-success btn-md px-1 ml-4 me-1 menu-btn">
               <i className="far fa-user mr-2"></i>
               {user.name}
