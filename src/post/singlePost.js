@@ -55,7 +55,7 @@ export default function SinglePost(){
             {isAuthenticated() && user._id === post.postedBy._id
               ? <div style={{marginTop: "-85px"}} className="d-flex flex-row-reverse">
                   <button onClick={() => {deletePost()}} className="btn btn-sm btn-danger mt-5 ml-0 p-2">Delete</button>
-                  <button onClick={() => {}} className="btn btn-sm btn-warning mt-5 ml-0 p-2">Edit</button>
+                  <Link to={"/posts/edit/" + postId} className="btn btn-sm btn-warning mt-5 ml-0 p-2">Edit</Link>
                 </div>
               : <></>
             }

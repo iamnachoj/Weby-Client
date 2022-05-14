@@ -7,6 +7,7 @@ import Posts from "./post/posts";
 import EditProfile from "./user/editprofile";
 import NewPost from "./post/NewPost";
 import SinglePost from "./post/singlePost";
+import EditPost from "./post/editPost";
 
 export default function MainRouter(){
   return (
@@ -21,6 +22,7 @@ export default function MainRouter(){
       <Route path="/users/edit/:userId" element={<EditProfile/>}/>
       <Route path="/post/create" element={<NewPost/>}/>
       <Route path="posts/:postId" element={<SinglePost/>} />
+      <Route path="posts/edit/:postId" element={<EditPost/>}/>
     </Routes>
   )  
 }
