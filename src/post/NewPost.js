@@ -1,9 +1,10 @@
-import { Link, Navigate } from "react-router-dom"
+import { Link, Navigate, useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react"
 import {create} from './apiPost'
 
 const postData = new FormData()
 export default function NewPost() {
+   const navigate = useNavigate();
    const [loading, setLoading] = useState(false)
    const [post, setPost] = useState({
        title: "",
@@ -78,7 +79,7 @@ export default function NewPost() {
    return (
     <div className="container">
     <main className="jumbotron mt-5 row">
-     <div className="col-md-9">
+     <div className="col-md-12">
            <h2 className="mb-5">New Post</h2>
            <div>
              <div>
@@ -98,9 +99,9 @@ export default function NewPost() {
                 {post.error ? <div className="alert alert-danger">{post.error}</div> : null}
                 {loading ? <div className="alert alert-primary">Creating post...</div>: null }
                 {post.created ? <div className="alert alert-success">Successfully created! click <Link to="/">here</Link> to see post.</div> : null }
-                <button onClick={clickSubmit} className="btn btn-sm ml-0">Create new post</button>
-                <Link to={`/users/${post.user._id}`} className="btn btn-sm btn-primary">go back</Link>
+                <button onClick={clickSubmit} className="btn btn-sm btn-primary ml-0">Create new post</button>
               </form>
+              <button  onClick={() => navigate(-1)} className="btn btn-sm btn ml-0">Go back</button>
              </div>
            </div>
       </div>
