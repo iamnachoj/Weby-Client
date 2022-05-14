@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import {Link, useParams } from "react-router-dom";
+import {Link, useParams, useNavigate } from "react-router-dom";
 import {getPost} from './apiPost'
 
 export default function SinglePost(){
     const [post, setPost] = useState({});
     const [loading, setLoading] = useState(true)
     const {postId} = useParams()
+    const navigate = useNavigate();
     useEffect(()=> {
         getPost(postId)
         .then(data => {
@@ -32,7 +33,9 @@ export default function SinglePost(){
                 </p>
             <br/>
         </div>
-        <Link className="btn mt-5 ml-0 p-2" to="/posts">back</Link>
+        <div>
+          <button className="btn mt-5 ml-0 p-2" onClick={() => navigate(-1)}>back</button>
+        </div>
         </div>
         {loading ? <div className="alert alert-primary">Loading...</div>: null }
       </div>  
