@@ -36,3 +36,14 @@ export function getPosts(){
       }}
     ).then((response) => {return response.json()})
   }
+
+  export function removePost(postId, token){
+    return fetch(process.env.REACT_APP_API_URL + "/posts/delete/" + postId, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}` // sending this, I am authorized to get the user
+      }
+    })
+   .then((response) => {return response.json()})
+  }
+  

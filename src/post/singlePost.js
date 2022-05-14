@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import {Link, useParams, useNavigate } from "react-router-dom";
-import {getPost} from './apiPost'
+import {getPost, removePost} from './apiPost'
 import { isAuthenticated } from "../auth";
 
 export default function SinglePost(){
@@ -9,6 +9,8 @@ export default function SinglePost(){
     const [loading, setLoading] = useState(true)
     const {postId} = useParams()
     const navigate = useNavigate();
+    const token = localStorage.getItem("token")
+
     useEffect(()=> {
         getPost(postId)
         .then(data => {
@@ -20,8 +22,22 @@ export default function SinglePost(){
          } 
        })
        }, [postId])
-       const userLink = post.postedBy ? "/users/" + post.postedBy._id : "/posts"
-       const photoUrl = post.photo ? `${process.env.REACT_APP_API_URL}/posts/photo/${post._id}` : null
+
+    const userLink = post.postedBy ? "/users/" + post.postedBy._id : "/posts"
+    const photoUrl = post.photo ? `${process.env.REACT_APP_API_URL}/posts/photo/${post._id}` : null
+
+    function deletePost(){
+      let answer = window.confirm("Are you sure you want to delete your post?")
+      if(answer){
+        removePost(postId, token)
+        setTimeout(() => {
+          window.location.reload(true)
+        },500)
+        navigate(-1)
+        
+      }
+    }
+
     return (
       <div className="container">
         <div to="/" className="post-card mt-4 mb-2 p-3">
@@ -39,8 +55,8 @@ export default function SinglePost(){
             <button className="btn btn-sm mt-5 ml-0 p-2" onClick={() => navigate(-1)}>back</button>
             {isAuthenticated() && user._id === post.postedBy._id
               ? <div style={{marginTop: "-85px"}} className="d-flex flex-row-reverse">
-                  <Link to={"/"} className="btn btn-sm btn-danger mt-5 ml-0 p-2">Delete</Link>
-                  <Link to={"/"} className="btn btn-sm btn-warning mt-5 ml-0 p-2">Edit</Link>
+                  <button onClick={() => {deletePost()}} className="btn btn-sm btn-danger mt-5 ml-0 p-2">Delete</button>
+                  <button onClick={() => {}} className="btn btn-sm btn-warning mt-5 ml-0 p-2">Edit</button>
                 </div>
               : <></>
             }
