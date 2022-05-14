@@ -85,7 +85,6 @@ export default function Profile(props){
               </div>
             </div>
           :<div className="col-md-3">
-            <div className="d-flex flex-row-reverse"></div>
                 <button className="btn btn-sm" onClick={() => navigate(-1)}>Go back</button>
             </div>
           }
