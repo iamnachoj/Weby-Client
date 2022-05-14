@@ -40,7 +40,7 @@ export default function Profile(props){
          setPosts(data)
        } 
      })
-     }, [userId]) 
+     }, [userId, token]) 
     
    if(redirectToSignin){
     return <Navigate to="/signin" />
