@@ -86,7 +86,7 @@ export default function Profile(props){
             </div>
           :<div className="col-md-3">
             <div className="d-flex flex-row-reverse"></div>
-                {user._id === JSON.parse(localStorage.getItem("user"))._id ? null : <button className="btn btn-sm" onClick={() => navigate(-1)}>Go back</button>}
+                <button className="btn btn-sm" onClick={() => navigate(-1)}>Go back</button>
             </div>
           }
         </main>
