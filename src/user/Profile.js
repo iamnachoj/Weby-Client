@@ -79,12 +79,12 @@ export default function Profile(props){
           </div> 
           {isAuthenticated() && userId === profile._id ? 
             <div className="col-md-3">
-            <div className="d-flex flex-row-reverse">
-              <DeleteButton user={user}/>
-              <Link to={`/users/edit/${user._id}`} className="btn btn-sm">Edit</Link>
+              <div className="d-flex flex-row-reverse">
+                <DeleteButton user={user}/>
+                <Link to={`/users/edit/${user._id}`} className="btn btn-sm">Edit</Link>
+                <Link className="btn btn-primary btn-sm" to="/post/create">post</Link>
+              </div>
             </div>
-            
-          </div>
           :<div className="col-md-3">
             <div className="d-flex flex-row-reverse"></div>
                 {user._id === JSON.parse(localStorage.getItem("user"))._id ? null : <button className="btn btn-sm"onClick={() => navigate(-1)}>Go back</button>}
