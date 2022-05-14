@@ -32,9 +32,8 @@ export default function SinglePost(){
         removePost(postId, token)
         setTimeout(() => {
           window.location.reload(true)
-        },500)
+        },100)
         navigate(-1)
-        
       }
     }
 
