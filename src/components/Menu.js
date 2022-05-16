@@ -24,7 +24,13 @@ export default function Menu(){
               <i className="far fa-user mr-2"></i>
               {user.name}
             </Link>
-            <button onClick={() => {signout(() => {navigate("/")})}} className="btn btn-link btn-md px-1 ml-2 me-1">Sign out</button>
+            <button onClick={() => {
+              let answer = window.confirm("Are you sure you want to log out?")
+              if(answer){
+               signout(() => {
+               navigate("/")}
+               )}
+              }} className="btn btn-link btn-md px-1 ml-2 me-1">Sign out</button>
           </>
           :
           <>
