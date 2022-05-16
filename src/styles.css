@@ -58,6 +58,12 @@ p {
   color: black;
   display: inline;
 }
+
+.singlepost-img{
+  width: 280px;
+  height: 280px;
+}
+
 @media screen and (max-width: 1002px) {
   .container{
     width: 90%

@@ -42,7 +42,7 @@ export default function SinglePost(){
         <div to="/" className="post-card mt-4 mb-2 p-3">
               <h3 className="mb-3" style={{display: "block"}}>{post.title}</h3>
               <p>{post.body}</p>
-              {photoUrl ? <img className="mb-3 img-thumbnail" style={{height: "200px", width: "auto"}} src={photoUrl} alt=""/> : null }
+              {photoUrl ? <img className="mb-3 img-thumbnail" style={{height: "300px", width: "auto"}} src={photoUrl} alt=""/> : null }
               <div className="mark mb-2">
                   <p className="mr-2 font-italic small" style={{display: "inline"}}>Posted by: {" "}
                   <Link to={userLink}>{post.postedBy ? post.postedBy.name : " Unknown"}</Link> {" "}
