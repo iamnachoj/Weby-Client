@@ -28,8 +28,8 @@ export default function Menu(){
           </>
           :
           <>
-            <Link to="/signup" className="btn btn-lg btn-link px-2 me-1">
-              Sign up
+            <Link to="/signin" className="btn btn-lg btn-link px-2 me-1">
+              Log in
             </Link>
           </>
            }

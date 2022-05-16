@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {Navigate} from "react-router-dom";
+import {Navigate, Link} from "react-router-dom";
 import { signin } from "../auth";
 
 export default function Signin() {
@@ -56,13 +56,7 @@ export default function Signin() {
 
     <main className="container mt-5">
       <div className="row">
-        <div className="col-md-6">
-            <h1 className="mt-5">Welcome to Weby!</h1>
-            <h2 className="mt-5">The Social Network</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse bibendum in mi eu ultrices. Maecenas in risus sit amet 
-            tellus sollicitudin maximus vulputate vel nisi. Fusce vel arcu porttitor, sagittis augue sit amet, ullamcorper turpis.
-            </p>
-        </div>
+        <div className="col-md-3"></div>
         <div className="col-md-6 mt-2">
           <h2 className="mt-5 mb-5">Log in</h2>
           <form>
@@ -77,9 +71,11 @@ export default function Signin() {
             {input.error ? <div className="alert alert-danger">{input.error} </div> : null}
             {input.redirect ? <div className="alert alert-success">Success! loading...</div> : null}
             {input.loading ? <div className="alert alert-primary">Loading...</div>: null }
-            <button onClick={submitData}className="btn ml-0">Sign in</button>
+            <button onClick={submitData}className="btn ml-0">Log in</button>
           </form>
+          <h6 style={{display: "inline"}}>Not an user?</h6><Link to="/signup"> sign up</Link>
         </div>
+        <div className="col-md-3"></div>
      </div>
    </main>
   );

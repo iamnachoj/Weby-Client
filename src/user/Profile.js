@@ -65,7 +65,7 @@ export default function Profile(props){
               <h2 className="mb-5">Profile</h2>
               <div className="row">
                     <div className="col-md-6">
-                      <img className="user-img-card-profile mb-5" src={avatarUrl} alt="profile-pic" />
+                      <img className="user-img-card-profile mb-5" src={avatarUrl} alt="" />
                       <ProfileTabs className="mb-5" followers={user.followers} following={user.following}/>
                     </div>
                     <div className="col-md-6">
