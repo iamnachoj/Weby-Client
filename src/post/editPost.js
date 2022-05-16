@@ -30,7 +30,7 @@ export default function EditPost(){
     setPost({
       ...post,
       fileSize,
-      error: "",
+      error: "no error",
       [name]: value
     })
    }
@@ -59,7 +59,7 @@ export default function EditPost(){
         navigate(-1)
       }
 
-    // console.log(post)
+    console.log(post)
   return (
     <div className="container">
         <main className="jumbotron mt-5 row">
@@ -79,15 +79,12 @@ export default function EditPost(){
                         <input onChange={handleChange} value={post.title || ""} name="title" id="title" type="text" className="form-control" />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="photo" className="text-muted">Photo</label>
-                        <input onChange={handleChange} name="photo" id="photo" type="file" accept="image/*" className="form-control" />
-                    </div>
-                    <div className="form-group">
                         <label htmlFor="body" className="text-muted">Body</label>
                         <textarea onChange={handleChange} value={post.body || ""} name="body" id="body" type="text" className="form-control" />
                     </div>
                     {post.error ? <div className="alert alert-danger">{post.error}</div> : null}
                     {loading ? <div className="alert alert-primary">Updating post...</div>: null }
+                    {post.error ? <div className="alert alert-primary">{post.error}</div>: null }
                     <button onClick={clickSubmit} className="btn btn-sm btn-primary ml-0">Update post</button>
                 </form>
                 <button  onClick={() => navigate(-1)} className="btn btn-sm btn ml-0">Go back</button>
