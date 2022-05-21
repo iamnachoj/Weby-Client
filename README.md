@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+It is the Front-end for WEBY, a Social Network app. Check the back end <a href="https://github.com/iamnachoj/Weby-API"> Here </a>.
+
 To run it locally, clone repository. You will need <a href="https://github.com/iamnachoj/Weby-API"> Weby Back end</a> to be running as well, so you will also need to clone that repository.
 
 ## Available Scripts
