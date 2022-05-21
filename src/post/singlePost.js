@@ -69,10 +69,10 @@ export default function SinglePost(){
               </div>
               <div>
                 <p className="h6 ml-">Likes: {numberOfLikes}</p>
-                <button onClick={() => likeToggle()}>{post.likes.includes(user._id) ? "Unlike post" : "Like post"}</button>
               </div>
           <div>
-            <button className="btn btn-sm mt-3 ml-0 p-2" onClick={() => navigate(-1)}>back</button>
+            <button className="btn btn-sm btn-primary mt-3 ml-0 p-2" onClick={() => navigate(-1)}>back</button>
+            <button className="btn btn-sm mt-3 p-2" onClick={() => likeToggle()}>{post.likes.includes(user._id) ? <><i className="fa fa-thumbs-down text-danger"></i> Unlike post</> : <><i className="fa fa-thumbs-up text-success"></i> Like post</>}</button>
             {isAuthenticated() && user._id === post.postedBy._id
               ? <div style={{marginTop: "-85px"}} className="d-flex flex-row-reverse">
                   <button onClick={() => {deletePost()}} className="btn btn-sm btn-danger mt-5 ml-0 p-2">Delete</button>
