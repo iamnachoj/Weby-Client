@@ -68,7 +68,7 @@ export default function SinglePost(){
               <br/>
               </div>
               <div>
-                <p className="h6 ml-">Likes: {numberOfLikes}</p>
+               {numberOfLikes ? <><p className="h6 ml-"><i className="fa fa-thumbs-up ml-1"></i> {numberOfLikes}</p></> : <></>}
               </div>
           <div>
             <button className="btn btn-sm btn-primary mt-3 ml-0 p-2" onClick={() => navigate(-1)}>back</button>
