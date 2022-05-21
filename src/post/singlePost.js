@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import {Link, useParams, useNavigate } from "react-router-dom";
-import {getPost, removePost} from './apiPost'
+import {getPost, removePost, like, unlike} from './apiPost'
 import { isAuthenticated } from "../auth";
 
 export default function SinglePost(){
-    const [post, setPost] = useState({postedBy:{_id:""}});
-    const user = JSON.parse(localStorage.getItem("user"));
+    const [post, setPost] = useState({likes: [], postedBy:{_id:""}});
+    const [liked, setLiked] = useState(false)
     const [loading, setLoading] = useState(true)
     const {postId} = useParams()
     const navigate = useNavigate();
+    const user = JSON.parse(localStorage.getItem("user"));
     const token = localStorage.getItem("token")
 
     useEffect(()=> {
@@ -22,7 +23,7 @@ export default function SinglePost(){
          } 
        })
        }, [postId])
-
+    const numberOfLikes = post.likes.length
     const userLink = post.postedBy ? "/users/" + post.postedBy._id : "/posts"
     const photoUrl = post.photo ? `${process.env.REACT_APP_API_URL}/posts/photo/${post._id}` : null
 
@@ -37,6 +38,21 @@ export default function SinglePost(){
       }
     }
 
+    function likeToggle(){
+      let callApi = liked ? unlike : like;
+      callApi(user._id, postId, token)
+      .then(data => {
+        if(data.error){
+          console.log(data.error)
+        } else {
+          setLiked(liked ? false : true)
+          console.log(data)
+          setPost({...data, postedBy : post.postedBy})
+          return data
+        }
+      })
+    }
+    
     return (
       <div className="container">
         <div to="/" className="post-card mt-4 mb-2 p-3">
@@ -49,9 +65,13 @@ export default function SinglePost(){
                   on  {new Date(post.created).toDateString()} at {new Date(post.created).toLocaleTimeString()}
                   </p>
               <br/>
-          </div>
+              </div>
+              <div>
+                <p className="h6 ml-">Likes: {numberOfLikes}</p>
+                <button onClick={() => likeToggle()}>{liked ? "Unlike post" : "Like post"}</button>
+              </div>
           <div>
-            <button className="btn btn-sm mt-5 ml-0 p-2" onClick={() => navigate(-1)}>back</button>
+            <button className="btn btn-sm mt-3 ml-0 p-2" onClick={() => navigate(-1)}>back</button>
             {isAuthenticated() && user._id === post.postedBy._id
               ? <div style={{marginTop: "-85px"}} className="d-flex flex-row-reverse">
                   <button onClick={() => {deletePost()}} className="btn btn-sm btn-danger mt-5 ml-0 p-2">Delete</button>
