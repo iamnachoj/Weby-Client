@@ -32,9 +32,9 @@ export default function SinglePost(){
       if(answer){
         removePost(postId, token)
         setTimeout(() => {
-          window.location.reload(true)
-        },100)
-        navigate(-1)
+          navigate("/posts")
+        },2000)
+        setLoading(true)
       }
     }
 
