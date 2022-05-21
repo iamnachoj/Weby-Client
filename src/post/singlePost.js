@@ -39,7 +39,7 @@ export default function SinglePost(){
     }
 
     function likeToggle(){
-      let callApi = liked ? unlike : like;
+      let callApi = post.likes.includes(user._id) ? unlike : like;
       callApi(user._id, postId, token)
       .then(data => {
         if(data.error){
@@ -68,7 +68,7 @@ export default function SinglePost(){
               </div>
               <div>
                 <p className="h6 ml-">Likes: {numberOfLikes}</p>
-                <button onClick={() => likeToggle()}>{liked ? "Unlike post" : "Like post"}</button>
+                <button onClick={() => likeToggle()}>{post.likes.includes(user._id) ? "Unlike post" : "Like post"}</button>
               </div>
           <div>
             <button className="btn btn-sm mt-3 ml-0 p-2" onClick={() => navigate(-1)}>back</button>
