@@ -65,3 +65,40 @@ export function getPosts(){
     .catch(err => console.log(err)) 
   }
   
+
+  export function like(userId, postId, token){
+    return fetch(process.env.REACT_APP_API_URL + "/posts/like", {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}` // sending this, I am authorized to get the user
+      },
+      body: JSON.stringify({userId, postId})
+    })
+    .then((response) => {
+      if(response.error){
+        console.log(response.error)
+      }
+       return response.json()})
+    .catch(err => console.log(err)) 
+  }
+
+  export function unlike(userId, postId, token){
+    return fetch(process.env.REACT_APP_API_URL + "/posts/unlike", {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}` // sending this, I am authorized to get the user
+      },
+      body: JSON.stringify({userId, postId})
+    })
+    .then((response) => {
+      if(response.error){
+        console.log(response.error)
+      }
+       return response.json()})
+    .catch(err => console.log(err)) 
+  }
+  
