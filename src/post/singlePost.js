@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import {Link, useParams, useNavigate } from "react-router-dom";
 import {getPost, removePost, like, unlike} from './apiPost'
-import { isAuthenticated } from "../auth";
+import { isAuthenticated, signin } from "../auth";
 
 export default function SinglePost(){
     const [post, setPost] = useState({likes: [], postedBy:{_id:""}});
@@ -9,14 +9,15 @@ export default function SinglePost(){
     const [loading, setLoading] = useState(true)
     const {postId} = useParams()
     const navigate = useNavigate();
-    const user = JSON.parse(localStorage.getItem("user"));
-    const token = localStorage.getItem("token")
+    const user = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : {};
+    const token = localStorage.getItem("token") ? localStorage.getItem("token") : "Unknown"
 
     useEffect(()=> {
         getPost(postId)
         .then(data => {
          if(data.error){
            console.log(data.error)
+           navigate("/signin")
          } else{
            setPost(data)
            setLoading(false)
@@ -44,9 +45,9 @@ export default function SinglePost(){
       .then(data => {
         if(data.error){
           console.log(data.error)
+          navigate("/signin")
         } else {
           setLiked(liked ? false : true)
-          console.log(data)
           setPost({...data, postedBy : post.postedBy})
           return data
         }
