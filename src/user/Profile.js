@@ -87,9 +87,7 @@ export default function Profile(props){
             </div>
           : <></>
           }
-        </main>
-        }
-        <div className="mt-5">
+          <div className="mt-5">
           {
            posts.length 
           ? <div>
@@ -118,6 +116,9 @@ export default function Profile(props){
             </>
           }
         </div>
+        </main>
+        }
+        
       </div>
      </>
     )
