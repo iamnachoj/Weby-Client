@@ -33,8 +33,21 @@ export default function Comment(props){
   return (
     <div className="ml-2 mr-2">
      <h4 className="mt-4 mb-2">Comments</h4><hr></hr>
-     {props.post.comments.length ? <></> : <h6 className="ml-1 mt-4 mb-4">No comments yet. Start a conversation!</h6>}
-     <form>
+     {props.post.comments.length 
+     ? <>
+       {/* Comments from props */}
+       {props.comments.map((comment, i) => {
+         return (
+           <div className="post-card mt-2 mb-4 p-2">
+             <p className="mb-0"><b>{comment.postedBy.name}: </b>{comment.text}</p>
+             <span className="mark font-italic small">{new Date(comment.created).toDateString()} at {new Date(comment.created).toLocaleTimeString()}</span>
+           </div>
+         )
+       })}
+       </> 
+     : <h6 className="ml-1 mt-4 mb-4">No comments yet. Start a conversation!</h6>}
+     <hr></hr>
+     <form className="mt-4">
         <div className="form-group">
           <textarea placeholder="add a comment..." onChange={handleChange} value={comment.text} name="text" type="text" className="form-control" />
           <button onClick={clickSubmit} className="btn btn-sm btn-primary mt-2 ml-0">Add Comment</button>

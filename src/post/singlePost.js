@@ -84,7 +84,7 @@ export default function SinglePost(){
               </div>
               <button className="btn btn-sm mt-3 p-2" onClick={() => likeToggle()}>{post.likes.includes(user._id) ? <><i className="fa fa-thumbs-down text-danger"></i> Unlike post</> : <><i className="fa fa-thumbs-up text-success"></i> Like post</>}</button>
           <div >
-            <Comment postId={postId} setPost={setPost} post={post}/>
+            <Comment comments={post.comments} postId={postId} setPost={setPost} post={post}/>
           </div>
         </div>
         {loading ? <div className="alert alert-primary">Loading...</div>: null }
