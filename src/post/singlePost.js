@@ -24,7 +24,7 @@ export default function SinglePost(){
            setLoading(false)
          } 
        })
-       }, [postId])
+       }, [postId, navigate])
     const numberOfLikes = post.likes.length
     const numberOfComments = post.comments.length
     const userLink = post.postedBy ? "/users/" + post.postedBy._id : "/posts"

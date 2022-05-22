@@ -8,8 +8,9 @@ export default function Comment(){
     setComment(value)
   }
 
-  function clickSubmit(){
-
+  function clickSubmit(event){
+    event.preventDefault();
+    
   }
   return (
     <div>
