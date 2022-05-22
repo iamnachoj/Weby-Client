@@ -102,7 +102,7 @@ export function getPosts(){
     .catch(err => console.log(err)) 
   }
   
-  export function comment(userId, postId, token, comment){
+  export function createComment(userId, postId, token, comment){
     return fetch(process.env.REACT_APP_API_URL + "/posts/comment", {
       method: "PUT",
       headers: {
@@ -120,7 +120,7 @@ export function getPosts(){
     .catch(err => console.log(err)) 
   }
 
-  export function commentOut(userId, postId, token, comment){
+  export function removeComment(userId, postId, token, comment){
     return fetch(process.env.REACT_APP_API_URL + "/posts/remove/comment", {
       method: "PUT",
       headers: {
