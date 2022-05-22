@@ -62,7 +62,8 @@ export default function Profile(props){
         ? <div className="alert alert-primary mt-5">Loading...</div> 
         :  <main className="jumbotron mt-5 row">
             <div className="col-md-9">
-              <h2 className="mb-5">Profile</h2>
+              <h2 className="mb-3">Profile</h2>
+              <hr></hr>
               <div className="row">
                     <div className="col-md-6">
                       <img className="user-img-card-profile mb-5" src={avatarUrl} alt="" />
@@ -84,16 +85,15 @@ export default function Profile(props){
                 <Link to={`/users/edit/${user._id}`} className="btn btn-sm">Edit</Link>
               </div>
             </div>
-          :<div className="col-md-3">
-                <button className="btn btn-sm" onClick={() => navigate(-1)}>Go back</button>
-            </div>
+          : <></>
           }
         </main>
         }
         <div className="mt-5">
-          {posts.length 
+          {
+           posts.length 
           ? <div>
-              <h2 style={{display: "inline"}}>Posts by {user.name}</h2>
+              <h2 style={{display: "inline"}}>{isAuthenticated() && userId === profile._id ? <>Your Posts</> : <>Posts by {user.name}</>}</h2>
               {
                   isAuthenticated() && userId === profile._id
                    ? <div style={{display: "inline"}}>
@@ -109,7 +109,14 @@ export default function Profile(props){
                     })
                   }
             </div>
-          : <></>}
+          : <>
+              <div>
+              <h2>Posts by {user.name}</h2>
+              <hr></hr>
+              <p className="mb-5">Not posts yet. {isAuthenticated() && userId === profile._id ? <Link to={"/post/create"}>Create your first post!</Link> : <></>}</p>
+              </div>
+            </>
+          }
         </div>
       </div>
      </>
