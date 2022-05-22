@@ -102,3 +102,38 @@ export function getPosts(){
     .catch(err => console.log(err)) 
   }
   
+  export function comment(userId, postId, token, comment){
+    return fetch(process.env.REACT_APP_API_URL + "/posts/comment", {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}` // sending this, I am authorized to get the user
+      },
+      body: JSON.stringify({userId, postId, comment})
+    })
+    .then((response) => {
+      if(response.error){
+        console.log(response.error)
+      }
+       return response.json()})
+    .catch(err => console.log(err)) 
+  }
+
+  export function commentOut(userId, postId, token, comment){
+    return fetch(process.env.REACT_APP_API_URL + "/posts/remove/comment", {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}` // sending this, I am authorized to get the user
+      },
+      body: JSON.stringify({userId, postId, comment})
+    })
+    .then((response) => {
+      if(response.error){
+        console.log(response.error)
+      }
+       return response.json()})
+    .catch(err => console.log(err)) 
+  }
