@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import {Link, useParams, useNavigate } from "react-router-dom";
 import {getPost, removePost, like, unlike} from './apiPost'
-import { isAuthenticated, signin } from "../auth";
+import { isAuthenticated } from "../auth";
+import Comment from "./Comment";
 
 export default function SinglePost(){
-    const [post, setPost] = useState({likes: [], postedBy:{_id:""}});
+    const [post, setPost] = useState({likes: [], comments: [], postedBy:{_id:""}});
     const [liked, setLiked] = useState(false)
     const [loading, setLoading] = useState(true)
     const {postId} = useParams()
@@ -25,6 +26,7 @@ export default function SinglePost(){
        })
        }, [postId])
     const numberOfLikes = post.likes.length
+    const numberOfComments = post.comments.length
     const userLink = post.postedBy ? "/users/" + post.postedBy._id : "/posts"
     const photoUrl = post.photo ? `${process.env.REACT_APP_API_URL}/posts/photo/${post._id}` : null
 
@@ -68,8 +70,10 @@ export default function SinglePost(){
               <br/>
               </div>
               <div>
-               {numberOfLikes ? <><p className="h6 ml-"><i className="fa fa-thumbs-up ml-1"></i> {numberOfLikes}</p></> : <></>}
+               {numberOfLikes ? <><p style={{display: "inline"}} className="h6 ml-0"><i className="fa fa-thumbs-up ml-1"></i> {numberOfLikes}</p></> : <></>}
+               {numberOfComments ? <><p style={{display: "inline"}} className="h6 ml-0"><i className="fa fa-comment ml-1"></i> {numberOfComments}</p></> : <></>}
               </div>
+              <Comment/>
           <div>
             <button className="btn btn-sm btn-primary mt-3 ml-0 p-2" onClick={() => navigate(-1)}>back</button>
             <button className="btn btn-sm mt-3 p-2" onClick={() => likeToggle()}>{post.likes.includes(user._id) ? <><i className="fa fa-thumbs-down text-danger"></i> Unlike post</> : <><i className="fa fa-thumbs-up text-success"></i> Like post</>}</button>
