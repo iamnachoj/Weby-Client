@@ -4,7 +4,6 @@ import {createComment} from "./apiPost";
 
 export default function Comment(props){
   const [comment, setComment] = useState({text: ""})
-  const [wantsToComment, setWantsToComment ] = useState(false)
   const navigate = useNavigate();
   const user = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : {};
   const token = localStorage.getItem("token") ? localStorage.getItem("token") : "Unknown";
@@ -32,17 +31,15 @@ export default function Comment(props){
   }
 
   return (
-    <div>
-      {wantsToComment 
-        ?  <form className="mt-4">
-              <div className="form-group">
-                <textarea placeholder="add a comment..." onChange={handleChange} value={comment.text} name="text" type="text" className="form-control" />
-                <button onClick={clickSubmit} className="btn btn-sm btn-primary mt-2 ml-0">Add Comment</button>
-              </div>  
-              <button onClick={() => {setWantsToComment(!wantsToComment)}}>hide comments</button>      
-            </form> 
-        : <button onClick={() => {setWantsToComment(!wantsToComment)}}>Comments</button>
-      }
+    <div className="ml-2 mr-2">
+     <h4 className="mt-4 mb-2">Comments</h4><hr></hr>
+     {props.post.comments.length ? <></> : <h6 className="ml-1 mt-4 mb-4">No comments yet. Be the first one adding your point!</h6>}
+     <form>
+        <div className="form-group">
+          <textarea placeholder="add a comment..." onChange={handleChange} value={comment.text} name="text" type="text" className="form-control" />
+          <button onClick={clickSubmit} className="btn btn-sm btn-primary mt-2 ml-0">Add Comment</button>
+        </div>     
+      </form> 
     </div>
   )
 }

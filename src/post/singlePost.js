@@ -59,6 +59,15 @@ export default function SinglePost(){
     return (
       <div className="container">
         <div to="/" className="post-card mt-4 mb-2 p-3">
+              <button className="btn btn-sm btn-primary mt-3 ml-0 p-2" onClick={() => navigate("/posts")}> &lt; go back</button>
+              {isAuthenticated() && user._id === post.postedBy._id
+              ? <div style={{marginTop: "-85px"}} className="d-flex flex-row-reverse">
+                  <button onClick={() => {deletePost()}} className="btn btn-sm btn-danger mt-5 ml-0 p-2">Delete</button>
+                  <Link to={"/posts/edit/" + postId} className="btn btn-sm btn-warning mt-5 ml-0 p-2">Edit</Link>
+                </div>
+              : <></>
+              }
+              <hr></hr>
               <h3 className="mb-3" style={{display: "block"}}>{post.title}</h3>
               <p>{post.body}</p>
               {photoUrl ? <img className="mb-3 img-thumbnail" style={{height: "300px", width: "auto"}} src={photoUrl} alt=""/> : null }
@@ -70,20 +79,12 @@ export default function SinglePost(){
               <br/>
               </div>
               <div>
-               {numberOfLikes ? <><p style={{display: "inline"}} className="h6 ml-0"><i className="fa fa-thumbs-up ml-1"></i> {numberOfLikes}</p></> : <></>}
-               {numberOfComments ? <><p style={{display: "inline"}} className="h6 ml-0"><i className="fa fa-comment ml-1"></i> {numberOfComments}</p></> : <></>}
+               {numberOfLikes ? <><p style={{display: "inline"}} className="h6 ml-0"><i className="fa fa-lg fa-thumbs-up ml-1"></i> {numberOfLikes}</p></> : <></>}
+               {numberOfComments ? <><p style={{display: "inline"}} className="h6 ml-0"><i className="fa fa-lg fa-comment ml-1"></i> {numberOfComments}</p></> : <></>}
               </div>
-              <Comment postId={postId} setPost={setPost}/>
-          <div>
-            <button className="btn btn-sm btn-primary mt-3 ml-0 p-2" onClick={() => navigate("/posts")}>back</button>
+          <div >
+            <Comment postId={postId} setPost={setPost} post={post}/>
             <button className="btn btn-sm mt-3 p-2" onClick={() => likeToggle()}>{post.likes.includes(user._id) ? <><i className="fa fa-thumbs-down text-danger"></i> Unlike post</> : <><i className="fa fa-thumbs-up text-success"></i> Like post</>}</button>
-            {isAuthenticated() && user._id === post.postedBy._id
-              ? <div style={{marginTop: "-85px"}} className="d-flex flex-row-reverse">
-                  <button onClick={() => {deletePost()}} className="btn btn-sm btn-danger mt-5 ml-0 p-2">Delete</button>
-                  <Link to={"/posts/edit/" + postId} className="btn btn-sm btn-warning mt-5 ml-0 p-2">Edit</Link>
-                </div>
-              : <></>
-            }
           </div>
         </div>
         {loading ? <div className="alert alert-primary">Loading...</div>: null }
