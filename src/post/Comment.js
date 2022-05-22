@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import {createComment} from "./apiPost";
 
 export default function Comment(props){
-  const [comment, setComment] = useState({text: ""})
+  const [comment, setComment] = useState({text: "", postedBy: {name: "", _id: ""}})
   const navigate = useNavigate();
   const user = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : {};
   const token = localStorage.getItem("token") ? localStorage.getItem("token") : "Unknown";
@@ -38,7 +38,7 @@ export default function Comment(props){
        {/* Comments from props */}
        {props.comments.map((comment, i) => {
          return (
-           <div className="post-card mt-2 mb-4 p-2">
+           <div className="post-card mt-2 mb-4 p-2" key={props.key}>
              <p className="mb-0"><b>{comment.postedBy.name}: </b>{comment.text}</p>
              <span className="mark font-italic small">{new Date(comment.created).toDateString()} at {new Date(comment.created).toLocaleTimeString()}</span>
            </div>

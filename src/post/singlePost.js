@@ -5,7 +5,7 @@ import { isAuthenticated } from "../auth";
 import Comment from "./Comment";
 
 export default function SinglePost(){
-    const [post, setPost] = useState({likes: [], comments: [], postedBy:{_id:""}});
+    const [post, setPost] = useState({likes: [], comments: [{postedBy: {name: "", _id:""}}], postedBy:{_id:""}});
     const [liked, setLiked] = useState(false)
     const [loading, setLoading] = useState(true)
     const {postId} = useParams()
@@ -51,6 +51,7 @@ export default function SinglePost(){
         } else {
           setLiked(liked ? false : true)
           setPost({...data, postedBy : post.postedBy})
+          console.log(data)
           return data
         }
       })
