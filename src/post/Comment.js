@@ -23,6 +23,7 @@ export default function Comment(props){
         navigate("/signin")
       } else {
         props.setPost(data) //passing a function as props. The solution to avoid reloading the page
+        setComment({text: ""})
         // setTimeout(() => {
         //   window.location.reload(true)
         // },300)
