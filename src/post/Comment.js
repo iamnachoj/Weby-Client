@@ -1,11 +1,11 @@
 import { useState } from "react/cjs/react.development"
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import {createComment} from "./apiPost";
 
 export default function Comment(props){
   const [comment, setComment] = useState({text: "", postedBy: {name: "", _id: ""}})
   const navigate = useNavigate();
-  const user = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : {};
+  const user = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null;
   const token = localStorage.getItem("token") ? localStorage.getItem("token") : "Unknown";
   const postId = props.postId
   function handleChange(event){
@@ -47,12 +47,16 @@ export default function Comment(props){
        </> 
      : <h6 className="ml-1 mt-4 mb-4">No comments yet. Start a conversation!</h6>}
      <hr></hr>
-     <form className="mt-4">
-        <div className="form-group">
-          <textarea placeholder="add a comment..." onChange={handleChange} value={comment.text} name="text" type="text" className="form-control" />
-          <button onClick={clickSubmit} className="btn btn-sm btn-primary mt-2 ml-0">Add Comment</button>
-        </div>     
-      </form> 
+     {user 
+     ? <form className="mt-4">
+          <div className="form-group">
+            <textarea placeholder="add a comment..." onChange={handleChange} value={comment.text} name="text" type="text" className="form-control" />
+            <button onClick={clickSubmit} className="btn btn-sm btn-primary mt-2 ml-0">Add Comment</button>
+          </div>     
+        </form> 
+      : <h5 className="m-2"><Link to={"/signin"}>Log in</Link> to add a comment</h5>
+     }
+     
     </div>
   )
 }
