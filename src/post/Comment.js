@@ -33,7 +33,7 @@ export default function Comment(props){
   return (
     <div className="ml-2 mr-2">
      <h4 className="mt-4 mb-2">Comments</h4><hr></hr>
-     {props.post.comments.length ? <></> : <h6 className="ml-1 mt-4 mb-4">No comments yet. Be the first one adding your point!</h6>}
+     {props.post.comments.length ? <></> : <h6 className="ml-1 mt-4 mb-4">No comments yet. Start a conversation!</h6>}
      <form>
         <div className="form-group">
           <textarea placeholder="add a comment..." onChange={handleChange} value={comment.text} name="text" type="text" className="form-control" />
