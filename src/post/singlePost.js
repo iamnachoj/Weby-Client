@@ -82,9 +82,9 @@ export default function SinglePost(){
                {numberOfLikes ? <><p style={{display: "inline"}} className="h6 ml-0"><i className="fa fa-lg fa-thumbs-up ml-1"></i> {numberOfLikes}</p></> : <></>}
                {numberOfComments ? <><p style={{display: "inline"}} className="h6 ml-0"><i className="fa fa-lg fa-comment ml-1"></i> {numberOfComments}</p></> : <></>}
               </div>
+              <button className="btn btn-sm mt-3 p-2" onClick={() => likeToggle()}>{post.likes.includes(user._id) ? <><i className="fa fa-thumbs-down text-danger"></i> Unlike post</> : <><i className="fa fa-thumbs-up text-success"></i> Like post</>}</button>
           <div >
             <Comment postId={postId} setPost={setPost} post={post}/>
-            <button className="btn btn-sm mt-3 p-2" onClick={() => likeToggle()}>{post.likes.includes(user._id) ? <><i className="fa fa-thumbs-down text-danger"></i> Unlike post</> : <><i className="fa fa-thumbs-up text-success"></i> Like post</>}</button>
           </div>
         </div>
         {loading ? <div className="alert alert-primary">Loading...</div>: null }
