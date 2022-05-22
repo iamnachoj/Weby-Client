@@ -18,6 +18,7 @@ export default function PostCard(props){
         <br/>
       </div>
       {props.post.likes.length ? <><i className="fa fa-thumbs-up ml-1"></i> {props.post.likes.length}</> : <></>}
+      {props.post.comments.length ? <><i className="fa fa-comment ml-1"></i> {props.post.comments.length}</> : <></>}
       <br/>
       <Link className="btn btn-sm ml-auto p-2 " to={postLink}>Read more</Link>
     </div>
