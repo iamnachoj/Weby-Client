@@ -9,6 +9,7 @@ import EditProfile from "./user/editprofile";
 import NewPost from "./post/NewPost";
 import SinglePost from "./post/singlePost";
 import EditPost from "./post/editPost";
+import ForgotPassword from "./user/ForgotPassword";
 import { isAuthenticated } from "./auth";
 export default function MainRouter(){
   return (
@@ -24,6 +25,7 @@ export default function MainRouter(){
       <Route path="/post/create" element={<NewPost/>}/>
       <Route path="posts/:postId" element={<SinglePost/>} />
       <Route path="posts/edit/:postId" element={<EditPost/>}/>
+      <Route path="/forgot-password" element={<ForgotPassword/>} />
     </Routes>
   )  
 }

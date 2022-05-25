@@ -73,6 +73,12 @@ export default function Signin() {
             {input.loading ? <div className="alert alert-primary">Loading...</div>: null }
             <button onClick={submitData}className="btn ml-0">Log in</button>
           </form>
+          <h6 className="small">
+            <Link to="/forgot-password" className="text-primary">
+                {" "}
+                Forgot password
+            </Link>
+          </h6>
           <h6 style={{display: "inline"}}>Not an user?</h6><Link to="/signup"> sign up</Link>
         </div>
         <div className="col-md-3"></div>
