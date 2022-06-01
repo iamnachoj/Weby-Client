@@ -10,6 +10,7 @@ import NewPost from "./post/NewPost";
 import SinglePost from "./post/singlePost";
 import EditPost from "./post/editPost";
 import ForgotPassword from "./user/ForgotPassword";
+import ResetPassword from "./user/ResetPassword";
 import { isAuthenticated } from "./auth";
 export default function MainRouter(){
   return (
@@ -26,6 +27,8 @@ export default function MainRouter(){
       <Route path="posts/:postId" element={<SinglePost/>} />
       <Route path="posts/edit/:postId" element={<EditPost/>}/>
       <Route path="/forgot-password" element={<ForgotPassword/>} />
+      <Route path="reset-password/:resetPasswordToken" element={<ResetPassword/>}
+/>
     </Routes>
   )  
 }
