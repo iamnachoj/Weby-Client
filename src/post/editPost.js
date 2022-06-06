@@ -30,7 +30,7 @@ export default function EditPost(){
     setPost({
       ...post,
       fileSize,
-      error: "no error",
+      error: "",
       [name]: value
     })
    }
