@@ -87,7 +87,7 @@ export default function EditPost(){
                     {post.error ? <div className="alert alert-primary">{post.error}</div>: null }
                     <button onClick={clickSubmit} className="btn btn-sm btn-primary ml-0">Update post</button>
                 </form>
-                <button  onClick={() => navigate(-1)} className="btn btn-sm btn ml-0">Go back</button>
+                <button  onClick={() => navigate("/posts/" + post._id)} className="btn btn-sm btn ml-0">Go back</button>
              </div>
          </div>
         </div>
