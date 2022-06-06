@@ -30,19 +30,25 @@ export default function Comment(props){
     })
   }
   function deleteComment(comment){
+   let answer = window.confirm("Are you sure you want to delete your post?")
+   if(answer){
    removeComment(user._id, postId, token, comment)
-   .then(data => {
-    if(data.error){
-      console.log(data.error)
-      navigate("/signin")
-    } else {
-      console.log("here we arrived")
-      props.setPost(data) //passing a function as props. The solution to avoid reloading the page
-      // setTimeout(() => {
-      //   window.location.reload(true)
-      // },300)
-    }
-  })
+    .then(data => {
+      if(data.error){
+        console.log(data.error)
+        navigate("/signin")
+      } else {
+        console.log("here we arrived")
+        props.setPost(data) //passing a function as props. The solution to avoid reloading the page
+        // setTimeout(() => {
+        //   window.location.reload(true)
+        // },300)
+      }
+    })
+   } else {
+     console.log("aborted")
+   }
+
   }
 
   return (
