@@ -1,6 +1,6 @@
 import { useState } from "react/cjs/react.development"
 import { useNavigate, Link } from "react-router-dom";
-import {createComment} from "./apiPost";
+import {createComment, removeComment} from "./apiPost";
 
 export default function Comment(props){
   const [comment, setComment] = useState({text: "", postedBy: {name: "", _id: ""}})
@@ -29,6 +29,21 @@ export default function Comment(props){
       }
     })
   }
+  function deleteComment(comment){
+   removeComment(user._id, postId, token, comment)
+   .then(data => {
+    if(data.error){
+      console.log(data.error)
+      navigate("/signin")
+    } else {
+      console.log("here we arrived")
+      props.setPost(data) //passing a function as props. The solution to avoid reloading the page
+      // setTimeout(() => {
+      //   window.location.reload(true)
+      // },300)
+    }
+  })
+  }
 
   return (
     <div className="ml-2 mr-2">
@@ -41,6 +56,7 @@ export default function Comment(props){
            <div className="post-card mt-2 mb-4 p-2" key={props.key}>
              <p className="mb-0"><b>{comment.postedBy.name}: </b>{comment.text}</p>
              <span className="mark font-italic small">{new Date(comment.created).toDateString()} at {new Date(comment.created).toLocaleTimeString()}</span>
+             {user._id === comment.postedBy._id ? <button onClick={() => deleteComment(comment)} className="float-right" style={{border: "0", backgroundColor: "white"}}><i className="fa fa-trash" style={{color: "red"}}></i></button> : <></>}
            </div>
          )
        })}
