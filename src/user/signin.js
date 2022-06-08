@@ -1,6 +1,7 @@
 import {useState} from "react";
 import {Navigate, Link} from "react-router-dom";
 import { signin } from "../auth";
+import SocialLogin from "./socialLogin";
 
 export default function Signin() {
   const [input, setInput] = useState({
@@ -79,7 +80,11 @@ export default function Signin() {
                 Forgot password
             </Link>
           </h6>
-          <h6 style={{display: "inline"}}>Not an user?</h6><Link to="/signup"> sign up</Link>
+          <h6 style={{display: "inline"}}>Not an user?</h6><Link to="/signup"> sign up</Link>   
+          <hr></hr>
+          <div className="mt-4">
+            <SocialLogin />
+          </div>
         </div>
         <div className="col-md-3"></div>
      </div>
