@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import {Link, useParams, useNavigate } from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {getUser} from './apiUser'
 import { getPostsByUser } from "../post/apiPost";
 import {Navigate} from "react-router-dom";
@@ -15,7 +15,6 @@ export default function Profile(props){
   const [posts, setPosts] = useState([]);
   const [redirectToSignin, setRedirectToSignin] = useState(false)
   const {userId} = useParams()
-  const navigate = useNavigate();
   const profile =  JSON.parse(localStorage.getItem("user"));
   const token = localStorage.getItem("token")
    // useEffect is a hook that takes the same job as ComponentDidMount in class components. 
