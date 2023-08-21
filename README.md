@@ -1,74 +1,55 @@
-# Getting Started with Weby
+# Welcome to Weby: Unleash Your Social Network!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Weby Logo](https://iamnachoj.github.io/portfolio-website/img/weby.png)
 
-It is the Front-end for WEBY, a Social Network app. Check the back end <a href="https://github.com/iamnachoj/Weby-API"> Here </a>.
+**Weby** is not just another social network; it's your ultimate platform to connect, share, and engage with the world like never before. This project is the embodiment of my passion for crafting innovative solutions that empower users to create meaningful connections.
 
-To run it locally, clone repository. You will need <a href="https://github.com/iamnachoj/Weby-API"> Weby Back end</a> to be running as well, so you will also need to clone that repository.
+## About Weby
 
-## Available Scripts
+Weby is a robust social networking application designed to revolutionize the way people interact online. This front-end application seamlessly integrates with the [Weby Back End](https://github.com/iamnachoj/Weby-API) – a custom-built solution that powers the platform. To fully experience Weby, both front-end and back-end components need to be up and running.
 
-In the project directory, you can run:
+### App Possibilities
 
-### `npm start`
+- **User-Friendly Interface:** Navigate through a beautifully designed, intuitive interface that makes social networking a breeze.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Register and Log In:** Create your account, log in, and embark on a personalized journey within the Weby community.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Express Yourself:** Write captivating posts, enhance them with images and videos, and share your thoughts with the world.
 
-### `npm test`
+- **Profile Customization:** Make your profile unique by adding a profile picture and a personalized status message.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Engagement Galore:** Receive likes, comments, and followers, and immerse yourself in lively interactions.
 
-### `npm run build`
+## Getting Started
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To explore Weby locally, follow these steps:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Clone the Repositories:** Start by cloning both the [Weby Front End](https://github.com/iamnachoj/Weby-Client) and [Weby Back End](https://github.com/iamnachoj/Weby-API) repositories to your local machine.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. **Back-End Setup:** The Weby Front End communicates with the custom-built back end. To ensure a seamless experience, make sure to set up and run the back end as well.
 
-### `npm run eject`
+3. **Installation:** Navigate to the project directory and install dependencies using your preferred package manager (npm or yarn).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+4. **Run the Application:** Launch the application by executing the relevant script (e.g., `npm start`).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+5. **Explore and Interact:** Open your browser and go to [http://localhost:3000](http://localhost:3000) to access Weby. Dive into its functionalities and features.
 
 ## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+To dive deeper into the magic of Weby, explore the following resources:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **React Documentation:** If you're new to React, refer to the [React documentation](https://reactjs.org/) for insights and guidance.
 
-### Code Splitting
+- **Create React App:** Discover more about the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started) to harness the full potential of your front-end project.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Contact and Support
 
-### Analyzing the Bundle Size
+If you're eager to run Weby locally and require back-end access, or if you have questions, feedback, or need assistance, please reach out to me at [contact@myemail.com](mailto:ignajimjim@gmail.com).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+**Please Note:** While I'm unable to provide immediate credentials, I'm more than happy to guide you through the setup process.
 
-### Making a Progressive Web App
+## Experience Weby in Action
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+You can also explore Weby in its live version at [weby.api.com](https://weby.api.com) and witness firsthand the possibilities of an enriched social networking experience.
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Thank you for joining the journey of Weby – where connections come alive and interactions thrive!
